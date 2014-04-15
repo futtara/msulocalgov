@@ -1,4 +1,4 @@
 msulocalgov
 ===========
 
-Montana LocalGovernment Center Data Portal
+Montana Local Government Center Data Portal
