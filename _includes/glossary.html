@@ -1,0 +1,82 @@
+      <div id="glossary"></div>
+
+<script>
+var glossDiv = document.getElementById('glossary');
+var glossary = [];
+var glossArray = [];
+
+function buildGlossaryButton() {
+  jQuery("#main")
+  .prepend( jQuery("<div>")
+  .attr("id", "glossary-button")
+  .text("Glossary")
+  .attr("onclick", "glossaryOverlay()"));
+}
+
+function glossMouseOver() {
+console.log("glossDiv ", glossDiv);
+  if (glossary[this.innerHTML]) {
+    glossDiv.html(glossary[this.innerHTML])  
+      .style("opacity", 0)
+      //.style("left", (d3.event.pageX) + "px")
+      .style("right", "0px")
+      .style("top", (d3.event.pageY - 28) + "px");
+    glossDiv.transition()
+      .duration(100)
+      .style("opacity", 1);
+  }
+}
+
+function glossMouseOut() {
+  glossDiv.transition()
+      .duration(100)
+      .style("opacity", 0);
+}
+
+// Build overlay
+function buildGlossary() {
+  buildGlossaryButton();
+
+  function writeGlossary(d) {
+    var dlen = d.length;
+    for (j = 0; j < dlen; j++) {
+      glossArray.push([d[j].term, d[j].description]);
+      glossary[d[j].term] = d[j].description;
+      //console.log(d[j].term, glossary[d[j].term]);
+    }
+    console.log("glossArray", glossArray);
+  }
+
+  var url = "/data/glossary.csv";
+  d3.csv(url, writeGlossary);
+}
+
+function toggleOverlay() {
+  if(glossDiv.style.display == "block") {
+    glossDiv.setAttribute("style","display:none");
+    glossDiv.style.opacity = 0;
+    //glossDiv.style.display = "none";
+  } else {
+    var h = jQuery( window ).height() - 20;
+    glossDiv.style.height = h + 'px';
+    glossDiv.style.opacity = 1;
+    glossDiv.style.display = "inline-block";
+  }
+}
+
+function glossaryOverlay() {
+  d3.select("#glossary").selectAll("div")
+    .data(glossArray)
+    .enter().append("div")
+    .attr("class", "glossary-item")
+    .selectAll("div")
+    .data(function(d) { return d; }) 
+    .enter().append("div")
+    .attr("class", "gloss")
+    .html(function(d) { return d; });
+
+  toggleOverlay();
+}
+
+buildGlossary();
+</script>

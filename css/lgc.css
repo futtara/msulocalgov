@@ -1,0 +1,1055 @@
+/* Notes
+ * SASS: use $variables, @import, @mixin, @extend 
+ * Logo may not match $banner-blue.
+ * 
+*/
+/*  base.scss
+    http://meyerweb.com/eric/tools/css/reset/
+    v2.0 | 20110126
+    License: none (public domain)
+------------------------------------------------------- */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* remember to define focus styles. Hee Haw */
+:focus {
+  outline: 0; }
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+h1 {
+  margin: 0.67em 0; }
+
+h1, h2, h3, h4 {
+  margin: .1em;
+  font-size: 1em;
+  font-weight: normal; }
+
+strong {
+  font-weight: bold; }
+
+em {
+  font-style: italic; }
+
+.prose {
+  line-height: 1.4;
+  padding: 0 .5em; }
+
+/* Read content styling */
+.prose ul {
+  list-style: disc;
+  margin-left: 40px; }
+
+.prose ol {
+  list-style: decimal; }
+
+.prose p {
+  margin: 0 0 10px; }
+
+.prose p + p {
+  margin-top: 1em; }
+
+/* Markup free clearing
+Details: http://www.positioniseverything.net/easyclearing.html
+------------------------------------------------------- */
+.clearfix:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+
+.fl {
+  float: left; }
+
+.fr {
+  float: right; }
+
+.clearfix {
+  display: inline-block; }
+
+.centered {
+  text-align: center; }
+
+/* Styles for LGC charts
+ * NOTES
+ */
+/* ===== General styles for chart pages ===== */
+html, body {
+  overflow-x: auto;
+  color: #000;
+  /* needed? */ }
+
+/* ===== General chart styles ===== */
+#chart-wrap {
+  font-size: .888em;
+  margin-bottom: 10px;
+  max-width: 50em;
+  padding-bottom: 10px;
+  position: relative;
+  width: 100%; }
+
+#controls {
+  padding: .5em; }
+
+#controls {
+  float: left;
+  position: absolute;
+  position: relative;
+  /* border-right: 1px solid #444; */ }
+
+#controls a {
+  color: #444;
+  text-decoration: none; }
+
+#controls label {
+  float: left;
+  clear: both;
+  margin: 4px 0 -2px 0; }
+
+#legend {
+  overflow: hidden;
+  padding-left: 20px; }
+
+#legend ul {
+  padding: 0; }
+
+#legend li {
+  margin-bottom: 2px;
+  white-space: nowrap; }
+
+.legend {
+  line-height: 14px;
+  background: #fff;
+  color: #555; }
+
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  clear: left;
+  margin-right: 8px;
+  border-radius: 5px; }
+
+.legend p {
+  margin: 0px;
+  padding: 4px; }
+
+#chart {
+  clear: both;
+  float: left;
+  position: relative;
+  width: 100%; }
+
+#svgchart {
+  position: relative;
+  width: 100%;
+  line-height: normal;
+  /* for responsive SVG; see: demosthenes.info/blog/744/Make-SVG-Responsive */
+  display: inline-block;
+  vertical-align: middle;
+  padding-bottom: 80%;
+  /*overflow: auto;*/ }
+
+#graph {
+  float: left;
+  clear: left;
+  position: relative;
+  overflow: auto;
+  width: 100%;
+  overflow: visible; }
+
+svg {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+#axisbar {
+  position: relative;
+  float: left;
+  clear: left;
+  width: 100%;
+  height: 20px; }
+
+#axis {
+  position: relative;
+  overflow: auto;
+  height: 18px;
+  /* barWidth + 2px */ }
+
+#axislabel {
+  float: left;
+  width: 10em;
+  /*font-size: .888em;*/
+  height: 18px;
+  /* barWidth + 2px */ }
+
+.axisdata {
+  position: absolute;
+  height: 18px;
+  /* barWidth + 2px */
+  overflow: auto;
+  border-bottom: 1px solid #bcb; }
+
+/* ===== Review ===== */
+#visualization .dataTable {
+  font-size: 1em; }
+
+.bar {
+  height: 24px;
+  left: 0;
+  overflow: auto;
+  width: 100%; }
+
+.bar:hover .barlabel {
+  background: #ddd; }
+
+.barlabel,
+.segment {
+  border-bottom: 1px solid #bcb;
+  box-sizing: border-box;
+  float: left;
+  height: 16px;
+  /* matches barWidth */
+  opacity: 1.0;
+  position: relative; }
+
+.barlabel {
+  background: #fff;
+  border-bottom: none;
+  padding-right: 0.5em;
+  width: 11em;
+  text-align: right; }
+
+.segment.proposed {
+  border-bottom: none; }
+
+.bardata {
+  overflow: auto;
+  position: relative; }
+
+.mouse {
+  border: 2px solid #333; }
+
+.marker {
+  display: inline-block;
+  margin-right: 10px;
+  width: 1em; }
+
+/* ----- Colors for Form of Government ----- */
+/* ColorBrewer diverging 9-class PiYG (use 1-4, 6-9) */
+/* #c51b7d, #de77ae, #f1b6da, #fde0ef, #f7f7f7, #e6f5d0, #b8e186, #7fbc41, #4d9221 */
+.Com, .ComCh {
+  background: #e6f5d0; }
+
+.ComA, .ComEx {
+  background: #b8e186; }
+
+.ComC, .ComExA {
+  background: #7fbc41; }
+
+.ComExC {
+  background: #4d9221; }
+
+.Mgr {
+  background: #de77ae; }
+
+.MgrA {
+  background: #de77ae; }
+
+.MgrC {
+  background: #f1b6da; }
+
+.TMC {
+  background: #fde0ef; }
+
+.Noproposal {
+  background: #666; }
+
+.NA {
+  background: #aaa; }
+
+.star {
+  /* background texture? */ }
+
+/* ===== Historical Multiline Charts ===== */
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 2;
+  shape-rendering: crispEdges; }
+
+path, line {
+  vector-effect: non-scaling-stroke; }
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px; }
+
+.y.axis, .line-label {
+  /*font-size: .888em;*/
+  font-weight: bold; }
+
+/* Forms */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 2 */
+  margin: 0;
+  /* 3 */ }
+
+button,
+select {
+  text-transform: none; }
+
+.selection {
+  overflow: auto;
+  float: left;
+  border: 1px solid #aaa;
+  background-color: #e8e8e8; }
+
+.page-template-page-historical-php .selection {
+  overflow: auto;
+  float: left;
+  border: 1px solid #aaa;
+  background-color: #eff; }
+
+.selection .field {
+  float: left;
+  padding: 5px;
+  background-color: #eff; }
+
+.selection .year {
+  float: left;
+  padding: 5px;
+  background-color: #e8e8e8; }
+
+.selection .name {
+  float: left;
+  padding: 5px;
+  background-color: #e8e8e8; }
+
+select {
+  display: block;
+  float: left;
+  clear: left;
+  margin: 5px 0; }
+
+option[disabled="disabled"] {
+  color: #888; }
+
+/* ===== Sortable bar charts ===== */
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges; }
+
+.bar {
+  fill: steelblue;
+  fill-opacity: .9; }
+
+.page-template-page-barcharts-php .x.axis path {
+  display: none; }
+
+/* .x.axis text[=] {
+  background-color: yellow;
+} */
+.x.axis text {
+  /*font-size: .888em;*/
+  text-anchor: end !important; }
+
+/* ----- sortable table with bars ----------------- */
+table {
+  table-layout: auto;
+  border-collapse: collapse;
+  /*font-size: .888em;*/
+  width: 100%; }
+
+.chart-table {
+  table-layout: fixed; }
+
+table th {
+  font-weight: normal;
+  text-align: right;
+  padding-right: 6px;
+  min-width: 43px; }
+
+table thead,
+table thead th {
+  font-weight: bold; }
+
+table thead td {
+  cursor: s-resize; }
+
+table tbody tr:first-child td {
+  padding-top: 2px; }
+
+table.chart-table tbody td {
+  padding: 0;
+  border-left: solid 1px #000;
+  /* axis for comparison charts */ }
+
+table tbody .bardiv {
+  background: steelblue; }
+
+table tbody tr:hover th {
+  background: #f8c0c0; }
+
+table tbody tr:hover .bardiv {
+  background: brown; }
+
+/* ----- vertical bar charts ---------------------- */
+.scale {
+  border-right: 1px solid #000;
+  font-weight: normal;
+  text-align: right;
+  padding-bottom: 3px; }
+
+.scale-wrap {
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding-top: 3px; }
+
+thead td {
+  text-align: center;
+  vertical-align: bottom; }
+
+/*
+.chart td {
+  position:relative;
+}
+.chart th {
+  width: 10%;
+}
+.bar rect {
+    stroke: #fff;
+    shape-rendering: crispEdges;
+}
+ 
+.bar rect.background {
+    fill: #eee;
+}
+ 
+.bar rect.percent {
+    fill: #74c476;
+}
+ 
+.bar:hover rect.percent {
+    fill: #a1d99b;
+}
+ 
+.bar text {
+  fill: #333;
+  font-size: .888em;
+}
+ 
+.axis line {
+    stroke: #ccc;
+    stroke-width: 1;
+}
+ 
+line.median {
+    stroke: #888;
+    stroke-width: 1;
+}
+*/
+/* ===== Map charts ===== */
+#map {
+  width: 100%;
+  height: 500px;
+  background: #fff; }
+
+.leaflet-control-attribution {
+  display: none; }
+
+#map-info {
+  background: white;
+  border: 1px solid #333;
+  color: #000;
+  display: none;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+  padding: 6px 8px;
+  position: absolute;
+  text-align: left;
+  z-index: 10000; }
+
+#map-info span {
+  color: #b75; }
+
+#map-info table {
+  width: 1px; }
+
+#map-info .info-name,
+#map-info .col-name,
+#map-info .col-val {
+  white-space: nowrap;
+  width: 1px; }
+
+.info-name {
+  color: #036;
+  /* darker than $banner-blue, looks ~same */
+  font-weight: bold;
+  text-align: center; }
+
+.col-name {
+  font-style: italic; }
+
+.col-val {
+  min-width: 6em;
+  text-align: right; }
+
+#info {
+  width: 900px; }
+
+.tooltip {
+  background: #fff;
+  border: 2px solid #888;
+  padding: 0 0.25em;
+  position: absolute; }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * ColVis styles
+ */
+div.ColVis {
+  float: right;
+  margin-bottom: 1em; }
+
+button.ColVis_Button,
+ul.ColVis_collection li {
+  position: relative;
+  float: left;
+  margin-right: 3px;
+  padding: 5px 8px;
+  border: 1px solid #999;
+  cursor: pointer;
+  *cursor: hand;
+  font-size: 0.88em;
+  color: black !important;
+  white-space: nowrap;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: 1px 1px 3px #ccc;
+  -moz-box-shadow: 1px 1px 3px #ccc;
+  -ms-box-shadow: 1px 1px 3px #ccc;
+  -o-box-shadow: 1px 1px 3px #ccc;
+  box-shadow: 1px 1px 3px #ccc;
+  /* Generated by http://www.colorzilla.com/gradient-editor/ */
+  background: #ffffff;
+  /* Old browsers */
+  background: -webkit-linear-gradient(top, white 0%, #f3f3f3 89%, #f9f9f9 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -moz-linear-gradient(top, white 0%, #f3f3f3 89%, #f9f9f9 100%);
+  /* FF3.6+ */
+  background: -ms-linear-gradient(top, white 0%, #f3f3f3 89%, #f9f9f9 100%);
+  /* IE10+ */
+  background: -o-linear-gradient(top, white 0%, #f3f3f3 89%, #f9f9f9 100%);
+  /* Opera 11.10+ */
+  background: linear-gradient(top, white 0%, #f3f3f3 89%, #f9f9f9 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f9f9f9',GradientType=0 );
+  /* IE6-9 */ }
+
+.ColVis_Button:hover,
+ul.ColVis_collection li:hover {
+  border: 1px solid #666;
+  text-decoration: none !important;
+  -webkit-box-shadow: 1px 1px 3px #999;
+  -moz-box-shadow: 1px 1px 3px #999;
+  -ms-box-shadow: 1px 1px 3px #999;
+  -o-box-shadow: 1px 1px 3px #999;
+  box-shadow: 1px 1px 3px #999;
+  background: #f3f3f3;
+  /* Old browsers */
+  background: -webkit-linear-gradient(top, #f3f3f3 0%, #e2e2e2 89%, #f4f4f4 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -moz-linear-gradient(top, #f3f3f3 0%, #e2e2e2 89%, #f4f4f4 100%);
+  /* FF3.6+ */
+  background: -ms-linear-gradient(top, #f3f3f3 0%, #e2e2e2 89%, #f4f4f4 100%);
+  /* IE10+ */
+  background: -o-linear-gradient(top, #f3f3f3 0%, #e2e2e2 89%, #f4f4f4 100%);
+  /* Opera 11.10+ */
+  background: linear-gradient(top, #f3f3f3 0%, #e2e2e2 89%, #f4f4f4 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f3f3f3', endColorstr='#f4f4f4',GradientType=0 );
+  /* IE6-9 */ }
+
+button.ColVis_Button {
+  height: 30px;
+  padding: 3px 8px; }
+
+button.ColVis_Button::-moz-focus-inner {
+  border: none !important;
+  padding: 0; }
+
+button.ColVis_Button:active {
+  outline: none; }
+
+div.ColVis_collectionBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  z-index: 1100; }
+
+ul.ColVis_collection {
+  width: 150px;
+  padding: 8px 8px 4px 8px;
+  margin: 0;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  background-color: #f3f3f3;
+  background-color: rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  z-index: 2002;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  -ms-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); }
+
+ul.ColVis_collection li {
+  position: relative;
+  height: auto;
+  left: 0;
+  right: 0;
+  padding: 0.5em;
+  display: block;
+  float: none;
+  margin-bottom: 4px;
+  -webkit-box-shadow: 1px 1px 3px #999;
+  -moz-box-shadow: 1px 1px 3px #999;
+  -ms-box-shadow: 1px 1px 3px #999;
+  -o-box-shadow: 1px 1px 3px #999;
+  box-shadow: 1px 1px 3px #999; }
+
+ul.ColVis_collection li {
+  text-align: left; }
+
+ul.ColVis_collection li.ColVis_Button:hover {
+  border: 1px solid #999;
+  background-color: #f0f0f0; }
+
+ul.ColVis_collection li span {
+  display: inline-block;
+  padding-left: 0.5em;
+  cursor: pointer; }
+
+ul.ColVis_collection li.ColVis_Special {
+  border-color: #555;
+  background: #ededed;
+  /* Old browsers */
+  background: -webkit-linear-gradient(top, #ededed 0%, #d6d6d6 77%, #e8e8e8 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -moz-linear-gradient(top, #ededed 0%, #d6d6d6 77%, #e8e8e8 100%);
+  /* FF3.6+ */
+  background: -ms-linear-gradient(top, #ededed 0%, #d6d6d6 77%, #e8e8e8 100%);
+  /* IE10+ */
+  background: -o-linear-gradient(top, #ededed 0%, #d6d6d6 77%, #e8e8e8 100%);
+  /* Opera 11.10+ */
+  background: linear-gradient(to bottom, #ededed 0%, #d6d6d6 77%, #e8e8e8 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#e8e8e8',GradientType=0 );
+  /* IE6-9 */ }
+
+ul.ColVis_collection li.ColVis_Special:hover {
+  background: #e2e2e2;
+  /* Old browsers */
+  background: -webkit-linear-gradient(top, #d0d0d0 0%, #d5d5d5 89%, #e2e2e2 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -moz-linear-gradient(top, #d0d0d0 0%, #d5d5d5 89%, #e2e2e2 100%);
+  /* FF3.6+ */
+  background: -ms-linear-gradient(top, #d0d0d0 0%, #d5d5d5 89%, #e2e2e2 100%);
+  /* IE10+ */
+  background: -o-linear-gradient(top, #d0d0d0 0%, #d5d5d5 89%, #e2e2e2 100%);
+  /* Opera 11.10+ */
+  background: linear-gradient(top, #d0d0d0 0%, #d5d5d5 89%, #e2e2e2 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f3f3f3', endColorstr='#e2e2e2',GradientType=0 );
+  /* IE6-9 */ }
+
+span.ColVis_radio {
+  display: inline-block;
+  width: 20px; }
+
+div.ColVis_catcher {
+  position: absolute;
+  z-index: 1101; }
+
+.disabled {
+  color: #999; }
+
+/* Block out what is behind the fixed column's header and footer */
+table.DTFC_Cloned thead,
+table.DTFC_Cloned tfoot {
+  background-color: white; }
+
+/* Block out the gap above the scrollbar on the right, when there is a fixed
+ * right column
+ */
+div.DTFC_Blocker {
+  background-color: white; }
+
+div.DTFC_LeftWrapper table.dataTable,
+div.DTFC_RightWrapper table.dataTable {
+  margin-bottom: 0; }
+
+div.DTFC_LeftWrapper table.dataTable.no-footer,
+div.DTFC_RightWrapper table.dataTable.no-footer {
+  border-bottom: none; }
+
+/* ===== Override dataTables css ===== */
+div.ColVis {
+  float: left;
+  padding: .5em; }
+
+ul.ColVis_collection {
+  width: auto; }
+
+.dataTable th {
+  vertical-align: middle; }
+
+/* Indicate fixed column */
+.DTFC_LeftBodyWrapper {
+  border-right: 3px solid #888; }
+
+/* Darker icon */
+.sorting {
+  background: url("/images/sort_both.png") no-repeat center right; }
+
+/* = dark blue @ msulocalgov.org */
+body {
+  font-size: 18px; }
+
+#main h1 {
+  font-size: 2em;
+  font-weight: normal; }
+
+#main h2 {
+  font-size: 1.5em;
+  font-weight: normal;
+  margin: .5em .5em .5em 0; }
+
+#main h3 {
+  font-size: 1.3em;
+  font-weight: normal; }
+
+#main h4 {
+  font-size: 1.2em;
+  font-weight: normal; }
+
+#masthead {
+  margin-top: 5px;
+  padding: 0; }
+
+#banner {
+  background: #003f7f;
+  overflow: hidden;
+  position: relative; }
+
+#msu-logo {
+  float: left;
+  margin: 0 15px 0 0;
+  padding: 2px 10px 25px 10px;
+  border-right: 1px solid #fff; }
+
+#site-title {
+  padding-top: 1em; }
+
+#site-title a {
+  color: #fff;
+  display: inline;
+  font-size: 1.75em;
+  font-weight: normal;
+  letter-spacing: 1px; }
+
+#site-desc a {
+  position: absolute;
+  top: 52px;
+  left: 7px;
+  font-size: 15px;
+  color: #fff; }
+
+#site-description a {
+  font-size: 12px;
+  color: #fff; }
+
+header {
+  overflow: hidden; }
+
+nav ul {
+  list-style-type: none; }
+
+nav li a {
+  float: left; }
+
+#content {
+  max-width: 45em;
+  margin: 0;
+  position: relative;
+  width: 100%; }
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  background: transparent; }
+
+#page {
+  position: relative;
+  padding: 0;
+  max-width: 1200px;
+  margin: auto;
+  margin: 0 0.5em; }
+
+#main {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.4); }
+
+#glossary-button {
+  background: #ee6;
+  padding: .25em;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 5em;
+  z-index: 100; }
+
+#glossary {
+  background: #fff;
+  border: 0.5em solid #ee6;
+  bottom: 0px;
+  display: none;
+  line-height: 1.4;
+  margin-left: 1em;
+  max-width: 45em;
+  overflow-y: scroll;
+  padding: 1em;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  z-index: 10; }
+
+.glossary-item {
+  margin-bottom: 1em; }
+
+#glossary .term {
+  background: #ddf;
+  padding: .25em; }
+
+#gloss {
+  background: #fff;
+  border: 5px solid #003f7f;
+  border-radius: 3px;
+  display: none;
+  max-width: 45em;
+  padding: 0 0.3em;
+  position: fixed;
+  right: 10%;
+  top: 20px;
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  z-index: 10000; }
+
+.datatip {
+  background: #fff;
+  border: 1px solid #666;
+  border-radius: 3px;
+  display: inline-block;
+  font-size: .889em;
+  padding: 0 0.3em;
+  position: absolute;
+  text-align: left;
+  vertical-align: middle;
+  z-index: 1000; }
+
+#about-the-data {
+  display: none;
+  position: absolute; }
+
+ul {
+  list-style: none; }
+
+/* ===== Responsive navigation style ============== */
+.container {
+  max-width: 100%;
+  margin: 0px auto;
+  overflow: hidden;
+  width: 100%; }
+
+.nav, .main_content {
+  -webkit-transition: .2s all ease;
+  -moz-transition: .2s all ease;
+  transition: .2s all ease;
+  width: 100%; }
+
+.menu_container, .footer {
+  clear: both;
+  overflow: hidden;
+  background-color: #fff; }
+
+.footer {
+  padding: 0.8em 0; }
+
+.menu_container, .anchor-link {
+  display: none; }
+
+.menu_container {
+  border-bottom: 1px solid #003f7f; }
+
+.anchor-link {
+  font-weight: bold;
+  padding: 1em;
+  text-align: right;
+  text-decoration: none;
+  background-color: #48c9b0;
+  color: #fff;
+  float: right; }
+
+.anchor-link:hover {
+  background-color: #ccc;
+  color: #fff; }
+
+.nav {
+  width: 100%;
+  border-bottom: 1px solid #003f7f; }
+
+.nav ul {
+  list-style: none;
+  padding: 2px;
+  margin: 0px;
+  font-weight: bold;
+  text-align: left; }
+
+.nav ul li {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left; }
+
+.nav ul li a {
+  display: block;
+  padding: .25em .5em;
+  text-decoration: none;
+  color: #003f7f; }
+
+.nav ul li a:hover {
+  background-color: #eeba39; }
+
+.nav ul li a:hover {
+  background-color: #003f7f;
+  color: #fff; }
+
+/* ===== Grid ===================================== */
+/* Dead Simple Grid https://github.com/mourner/dead-simple-grid */
+.col {
+  float: left;
+  /* width: 100%;
+  padding: 0 1.5em; */ }
+
+.row .row {
+  margin: 0 -1.5em; }
+
+.row:before, .row:after {
+  content: "";
+  display: table; }
+
+.row:after {
+  clear: both; }
+
+/* ===== Media Queries ============================ */
+@media only screen and (max-width: 48em) {
+  body {
+    font-size: 16px; }
+
+ /* 
+  .menu_container, .anchor-link { display: block; }
+  
+  .nav { margin-left: -100%; float: left;}
+  .main_content { margin-left: 0; float: left; }
+  
+  font-size: 16px;
+
+  body.active .nav { margin-left: 0; width:60%; }
+  body.active .main_content { margin-right: -100%; }
+  
+  .nav { padding: 0.6em 0; border: none; padding: 0; }
+  .nav ul { text-align: left; font-weight: normal; }
+  .nav ul li { display: block; }
+  .nav ul li a { border-bottom: 1px solid #3E3E3E; border-top: 1px solid #717171; color: #ffffff; padding: 12px; }
+  .nav ul li a:hover { background-color:#5C5C5C; }
+ */ }
+/* Set widths when sidebar is present */
+@media only screen and (min-width: 48em) {
+  .has-sidebar #content {
+    width: 75%; }
+
+  .has-sidebar #sidebar {
+    width: 25%; } }

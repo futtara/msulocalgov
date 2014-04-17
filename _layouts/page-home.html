@@ -1,0 +1,49 @@
+---
+layout: default
+section: home
+---
+
+    <div id="main">
+      <div class="row">
+        <div id="content" class="col">
+          <div class="prose">
+            {{content}}
+          </div>
+
+          <div id="listings">
+
+            <h2>News</h2>
+              <h3>County</h3>
+                <ul>
+                {% for item in site.tags.county limit:1000 %}
+                  {% if item.category == "news" %}
+                  <li><a class="item" href="{{item.url}}">{{item.title}}</a></li> {% endif %}{% endfor %}
+                </ul>
+              <h3>City</h3>
+                <ul>
+                {% for item in site.tags.city limit:1000 %}
+                  {% if item.category == "news" %}
+                  <li><a class="item" href="{{item.url}}">{{item.title}}</a></li> {% endif %}{% endfor %}
+                </ul>
+
+            <h2>Data Stories</h2>
+              <h3>County</h3>
+                <ul>
+                {% for item in site.tags.county limit:1000 %}
+                  {% if item.category == "datastories" %}
+                  <li><a class="item" href="{{item.url}}">{{item.title}}</a></li> {% endif %}{% endfor %}
+                </ul>
+              <h3>City</h3>
+                <ul>
+                {% for item in site.tags.city limit:1000 %}
+                  {% if item.category == "datastories" %}
+                  <li><a class="item" href="{{item.url}}">{{item.title}}</a></li> {% endif %}{% endfor %}
+                </ul>
+          </div> <!-- end of #listings -->
+        </div> <!-- end of #content -->
+        {% if page.sidebar %}
+        {% include sidebar.html %}
+        {% endif %}
+      </div> <!-- end of .row -->
+
+    </div> <!-- end of main -->

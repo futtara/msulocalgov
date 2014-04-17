@@ -1,0 +1,27 @@
+      <aside>
+        <div id="sidebar" class="col">
+          <p>Sidebar here</p>
+          {% if page.sidebar == "main" %}
+          <ul id="nav">
+            <li>
+              <a class="{% if page.section == "blog" %}active{% endif %}" href="/">Home</a>
+            </li>
+            <li>
+              <a class="{% if page.url == "about/" %}active{% endif %}" href="/about">About</a>
+            </li>
+            <li>
+              <a class="{% if page.url == "about/" %}active{% endif %}" href="/about">Counties</a>
+            </li>
+            <li>
+              <a class="{% if page.url == "about/" %}active{% endif %}" href="/about">Cities</a>
+            </li>
+            <li>
+              <a href="//github.com/prose/starter">Glossary</a>
+            </li>
+            <li>
+              <a class="{% if page.url == "about/" %}active{% endif %}" href="/about">Contact</a>
+            </li>
+          </ul>
+          {% endif %}
+        </div> <!-- end of sidebar -->
+      </aside>
