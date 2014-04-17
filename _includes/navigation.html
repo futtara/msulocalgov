@@ -1,0 +1,23 @@
+  <div class="menu_container">
+    <a id="menu-toggle" class="anchor-link" href="#mobile-nav">MENU</a>
+  </div>
+  
+  <nav id="#mobile-nav" class="nav clearfix" role="navigation">
+    <ul>
+      <li>
+        <a class="{% if page.category == "home" %}active{% endif %}" href="{{site.baseurl}}/">Home</a>
+      </li>
+      <li>
+        <a class="{% if page.url == "about/" %}active{% endif %}" href="{{site.baseurl}}/about">About</a>
+      </li>
+      <li>
+        <a class="{% if page.category == "city" %}active{% endif %}" href="{{site.baseurl}}/city/city-data/">City</a>
+      </li>
+      <li>
+        <a class="{% if page.category == "county" %}active{% endif %}" href="{{site.baseurl}}/county/county-data/">County</a>
+      </li>
+      <li>
+        <a class="{% if page.url == "contact/" %}active{% endif %}" href="/contact">Contact</a>
+      </li>
+    </ul>
+  </nav>

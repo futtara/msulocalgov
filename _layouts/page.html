@@ -1,0 +1,18 @@
+---
+layout: default
+section: home
+---
+
+    <div id="main">
+      <div class="row">
+        <div id="content" class="col">
+          <div class="prose">
+            {{content}}
+          </div>
+        </div> <!-- end of #content -->
+        {% if page.sidebar and page.sidebar != "none" %}
+        {% include sidebar.html %}
+        {% endif %}
+      </div> <!-- end of .row -->
+
+    </div> <!-- end of main -->

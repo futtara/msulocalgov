@@ -1,0 +1,23 @@
+---
+---
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MT LGC {% if page.url != "/index.html" %}| {{page.title}}{% endif %}</title>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=9">
+  <meta name="viewport" content="initial-scale=1,user-scalable=yes" />
+  {% if page.url contains "map" %}
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
+  {% endif %}
+  {% if page.url contains "table" %}
+  <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+  {% endif %}
+  <link href="{{site.baseurl}}/css/lgc.css" rel="stylesheet" />
+</head>
+<body class="{{page.layout}}">
+  <div id="page"{% if page.sidebar and page.sidebar != "none" %} class="has-sidebar sidebar-{{page.sidebar}}"{% endif %}>
+    {% include header.html %}
+{{content}} {% comment %} Keep left to avoid offset in html {% endcomment %}
+  </div> <!-- end of page -->
+</body>

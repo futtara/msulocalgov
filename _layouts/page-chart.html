@@ -1,0 +1,65 @@
+---
+layout: default
+section: chart
+---
+{% if page.url contains "table" %}
+  {% assign chart-type = "table" %}
+{% elsif page.url contains "comparison" %}
+  {% assign chart-type = "comparison" %}
+{% elsif page.url contains "historical" %}
+  {% assign chart-type = "historical" %}
+{% elsif page.url contains "map" %}
+  {% assign chart-type = "map" %}
+{% else %}
+  {% assign chart-type = "other" %}
+{% endif %}
+
+    <div id="main">
+      <div class="row">
+        <div id="content" class="col">
+          <div class="prose">
+            {{content}}
+          </div>
+
+          <div id="chart-wrap" class="col">
+            <header><h1 id="chart-title"></h1></header>
+            <div id="controls"></div>
+            <div id="legend"></div>
+            <div id="chart"></div>
+          </div>
+
+        </div> <!-- end of #content -->
+        {% if page.sidebar and page.sidebar != "none" %}
+        {% include sidebar.html %}
+        {% endif %}
+      </div> <!-- end of row -->
+
+      <div id="gloss"></div>
+      <div id="glossary"></div>
+
+      <div id="about-the-data"></div>
+
+    </div> <!-- end of main -->
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/js/jquery-1.11.0.min.js" type="text/javascript"><\/script>')</script>
+  <!--[if lt IE 10]>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.1/jquery.xdomainrequest.min.js"></script>
+  <![endif]-->
+  <!--[if lt IE 9]>
+    <script type="text/javascript" src="aight.min.js"></script>
+  <![endif]-->
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="{{site.baseurl}}/js/lgc.js"></script>
+{% if page.url contains "table" %}
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+  <script>console.log("fn.dataTable exists ", window.jQuery.fn.dataTable ? 1 : 0);window.jQuery.fn.dataTable || document.write('<script src="/js/jquery.dataTables.min.js" type="text/javascript"><\/script>')</script>
+{% endif %} 
+{% if page.required-scripts %} 
+{% for item in page.required-scripts %} 
+  <script type="text/javascript" src="{{site.baseurl}}/js/{{ item }}"></script> {% endfor %} 
+{% endif %} 
+{% if page.script %}
+  <script type="text/javascript" src="{{site.baseurl}}/js/charts/init-{{ page.category }}.js"></script>
+  <script type="text/javascript" src="{{site.baseurl}}/js/charts/{{ page.script }}"></script>
+{% endif %}

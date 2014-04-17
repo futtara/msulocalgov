@@ -1,0 +1,141 @@
+exclude: [Gemfile, Gemfile.lock, vendor, config, README.md, package.json, Gruntfile.js, node_modules]
+baseurl: http://data.msulocalgov.net
+site-name: 'Montana Local Government Data'
+permalink: /:categories/:title
+markdown: rdiscount
+prose:
+  rooturl: '_posts'
+  siteurl: 'http://prose.github.io/starter/'
+  relativeLinks: 'http://prose.github.io/starter/links.jsonp'
+  media: 'media'
+  metadata:
+    _posts:
+      - name: "category"
+        field:
+          element: "text"
+          label: "Category"
+          placeholder: "Choose Category"
+          value: ""
+      - name: "layout"
+        field:
+          element: "text"
+          label: "Layout"
+          placeholder: "Choose Layout"
+          value: ""
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "tags"
+        field:
+          element: "multiselect"
+          label: "Add Tags"
+          placeholder: "Choose Tag"
+          options:
+            - name: "County"
+              value: "county"
+            - name: "City"
+              value: "city"
+            - name: "General"
+              value: "general"
+    _posts/city:
+      - name: "category"
+        field:
+          element: "hidden"
+          value: "city"
+      - name: "layout"
+        field:
+          element: "text"
+          label: "Layout"
+          placeholder: "Choose Layout"
+          value: ""
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "tags"
+        field:
+          element: "text"
+          label: "Add Tags"
+          placeholder: "Choose Tag"
+          value: ""
+    _posts/county:
+      - name: "category"
+        field:
+          element: "hidden"
+          value: "county"
+      - name: "layout"
+        field:
+          element: "text"
+          label: "Layout"
+          placeholder: "Choose Layout"
+          value: ""
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "tags"
+        field:
+          element: "text"
+          label: "Add Tags"
+          placeholder: "Choose Tag"
+          value: ""
+    _posts/datastories:
+      - name: "category"
+        field:
+          element: "hidden"
+          value: "datastories"
+      - name: "layout"
+        field:
+          element: "text"
+          label: "Layout"
+          placeholder: "Choose Layout"
+          value: ""
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "tags"
+        field:
+          element: "multiselect"
+          label: "Add Tags"
+          placeholder: "Choose Tag"
+          options:
+            - name: "County"
+              value: "county"
+            - name: "City"
+              value: "city"
+            - name: "General"
+              value: "general"
+    _posts/news:
+      - name: "category"
+        field:
+          element: "hidden"
+          value: "news"
+      - name: "layout"
+        field:
+          element: "text"
+          label: "Layout"
+          placeholder: "Choose Layout"
+          value: ""
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "tags"
+        field:
+          element: "multiselect"
+          label: "Add Tags"
+          placeholder: "Choose Tag"
+          options:
+            - name: "County"
+              value: "county"
+            - name: "City"
+              value: "city"
+            - name: "General"
+              value: "general"

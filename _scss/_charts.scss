@@ -1,0 +1,470 @@
+/* Styles for LGC charts
+ * NOTES
+ */
+
+$prose-max-width: 50em;
+$aspect: 80%;
+
+/* ===== General styles for chart pages ===== */
+
+    html, body {
+        overflow-x: auto;
+        color:#000; /* needed? */
+    }
+
+/* ===== General chart styles ===== */
+
+#chart-wrap {
+  font-size: .888em;
+  margin-bottom: 10px;
+  max-width: $prose-max-width;
+  padding-bottom: 10px;
+  position: relative;
+  width: 100%;
+}
+#controls {
+  padding: .5em;
+}
+#controls {
+    float: left;
+    position: absolute;
+    position: relative;
+    /* border-right: 1px solid #444; */
+}
+#controls a {
+    color: #444;
+    text-decoration: none;
+}
+#controls label {
+    float: left;
+    clear: both;
+    margin: 4px 0 -2px 0;
+}
+#legend {
+  overflow: hidden;
+  padding-left: 20px;
+}
+#legend ul {
+  padding: 0;
+}
+#legend li {
+  margin-bottom: 2px;
+  white-space: nowrap;
+}
+.legend {
+  line-height: 14px;
+  background: #fff;
+  color: #555;
+}
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  clear: left;
+  margin-right: 8px;
+  border-radius: 5px;
+}
+.legend p {
+  margin: 0px;
+  padding: 4px;
+}
+
+#chart {
+  clear:both;
+  float:left;
+  position: relative;
+  width: 100%;
+}
+#svgchart {
+  position: relative;
+  width: 100%;
+  line-height: normal;
+  /* for responsive SVG; see: demosthenes.info/blog/744/Make-SVG-Responsive */
+  display: inline-block;
+  vertical-align: middle;
+  padding-bottom: $aspect;
+  /*overflow: auto;*/
+}
+#graph {
+  float: left;
+  clear: left;
+  position: relative;
+  overflow: auto;
+  width: 100%;
+  overflow: visible;
+}
+svg {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#axisbar {
+  position: relative;
+  float: left;
+  clear: left;
+  width: 100%;
+  height: 20px;
+}
+#axis {
+  position: relative;
+  overflow: auto;
+  height: 18px; /* barWidth + 2px */
+}
+#axislabel {
+  float: left;
+  width: 10em;
+  /*font-size: .888em;*/
+  height: 18px; /* barWidth + 2px */
+}
+.axisdata {
+  position: absolute;
+  height: 18px; /* barWidth + 2px */
+  overflow: auto;
+  border-bottom: 1px solid #bcb;
+}
+
+/* ===== Review ===== */
+
+#visualization .dataTable {
+  font-size: 1em;
+}
+
+.bar {
+  height: 24px;
+  left: 0;
+  overflow: auto;
+  width: 100%;
+}
+.bar:hover .barlabel {
+  background: #ddd;
+}
+.barlabel,
+.segment {
+  border-bottom: 1px solid #bcb;
+  box-sizing: border-box;
+  float: left;
+  height: 16px; /* matches barWidth */
+  opacity: 1.0;
+  position: relative;
+}
+.barlabel {
+  background: #fff;
+  border-bottom: none;
+  padding-right: 0.5em;
+  width: 11em;
+  text-align: right;
+}
+.segment.proposed {
+  border-bottom: none;
+}
+.bardata {
+  overflow: auto;
+  position: relative;
+}
+.mouse {
+  border: 2px solid #333;
+}
+
+.marker {
+  display: inline-block;
+  margin-right: 10px;
+  width: 1em;
+}
+
+/* ----- Colors for Form of Government ----- */
+
+/* ColorBrewer diverging 9-class PiYG (use 1-4, 6-9) */
+/* #c51b7d, #de77ae, #f1b6da, #fde0ef, #f7f7f7, #e6f5d0, #b8e186, #7fbc41, #4d9221 */
+.Com, .ComCh { background: #e6f5d0; }
+.ComA, .ComEx { background: #b8e186; }
+.ComC, .ComExA { background: #7fbc41; }
+.ComExC { background: #4d9221; }
+
+.Mgr { background: #de77ae; }
+.MgrA { background: #de77ae; }
+.MgrC { background: #f1b6da; }
+.TMC { background: #fde0ef; }
+
+.Noproposal { background: #666; }
+.NA { background: #aaa; }
+
+.star { /* background texture? */ }
+
+/* ===== Historical Multiline Charts ===== */
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 2;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+}
+
+path, line {
+  vector-effect: non-scaling-stroke;
+}
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.y.axis, .line-label {
+  /*font-size: .888em;*/
+  font-weight: bold;
+}
+
+/* Forms */
+
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit; /* 1 */
+    font-size: 100%; /* 2 */
+    margin: 0; /* 3 */
+}
+
+button,
+select {
+    text-transform: none;
+}
+
+.selection {
+  overflow: auto;
+  float: left;
+  border: 1px solid #aaa;
+  background-color: #e8e8e8;
+}
+
+
+.page-template-page-historical-php .selection {
+  overflow: auto;
+  float: left;
+  border: 1px solid #aaa;
+  background-color: #eff;
+}
+
+.selection .field {
+  float: left;
+  padding: 5px;
+  background-color: #eff;
+}
+.selection .year {
+  float: left;
+  padding: 5px;
+  background-color: #e8e8e8;
+}
+.selection .name {
+  float: left;
+  padding: 5px;
+  background-color: #e8e8e8;
+}
+
+select {
+  display: block;
+  float: left;
+  clear: left;
+  margin: 5px 0;
+}
+option[disabled="disabled"] {
+  color: #888;
+}
+
+/* ===== Sortable bar charts ===== */
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+  fill-opacity: .9;
+}
+
+.page-template-page-barcharts-php .x.axis path {
+  display: none;
+}
+
+/* .x.axis text[=] {
+  background-color: yellow;
+} */
+
+.x.axis text {
+  /*font-size: .888em;*/
+  text-anchor: end !important;
+}
+/* ----- sortable table with bars ----------------- */
+table {
+  table-layout: auto;
+  border-collapse: collapse;
+  /*font-size: .888em;*/
+  width: 100%;
+}
+.chart-table {
+  table-layout: fixed;
+}
+
+table th {
+  font-weight: normal;
+  text-align: right;
+  padding-right: 6px;
+  min-width: 43px;
+}
+
+table thead,
+table thead th {
+  font-weight: bold;
+}
+
+table thead td {
+  cursor: s-resize;
+}
+
+table tbody tr:first-child td {
+  padding-top: 2px;
+}
+
+table.chart-table tbody td {
+  padding: 0;
+  border-left: solid 1px #000; /* axis for comparison charts */
+}
+
+table tbody .bardiv {
+  background: steelblue;
+}
+
+table tbody tr:hover th {
+  background: #f8c0c0;
+}
+table tbody tr:hover .bardiv {
+  background: brown;
+}
+/* ----- vertical bar charts ---------------------- */
+.scale {
+  border-right: 1px solid #000;
+  font-weight: normal;
+  text-align: right;
+  padding-bottom: 3px;
+}
+.scale-wrap {
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding-top: 3px;
+}
+thead td {
+  text-align: center;
+  vertical-align: bottom;
+}
+/*
+.chart td {
+  position:relative;
+}
+.chart th {
+  width: 10%;
+}
+.bar rect {
+    stroke: #fff;
+    shape-rendering: crispEdges;
+}
+ 
+.bar rect.background {
+    fill: #eee;
+}
+ 
+.bar rect.percent {
+    fill: #74c476;
+}
+ 
+.bar:hover rect.percent {
+    fill: #a1d99b;
+}
+ 
+.bar text {
+  fill: #333;
+  font-size: .888em;
+}
+ 
+.axis line {
+    stroke: #ccc;
+    stroke-width: 1;
+}
+ 
+line.median {
+    stroke: #888;
+    stroke-width: 1;
+}
+*/
+
+/* ===== Map charts ===== */
+
+#map {
+  width: 100%;
+  height: 500px;
+  background: #fff;
+}
+
+.leaflet-control-attribution {
+  display: none;
+}
+
+#map-info {
+  background: white;
+  border: 1px solid #333;
+  color: #000;
+  display: none;
+  opacity: 0.9;
+  filter: alpha(opacity = 90);
+  padding: 6px 8px;
+  position: absolute;
+  text-align: left;
+  z-index: 10000;
+}
+#map-info span {
+  color: #b75;
+}
+#map-info table {
+  width: 1px;
+}
+#map-info .info-name,
+#map-info .col-name,
+#map-info .col-val {
+  white-space: nowrap;
+  width: 1px;
+}
+.info-name {
+  color: #036; /* darker than $banner-blue, looks ~same */
+  font-weight: bold;
+  text-align: center;
+}
+.col-name {
+  font-style: italic;
+}
+.col-val {
+  min-width: 6em;
+  text-align: right;
+}
+#info {
+  width: 900px;
+}
+
+.tooltip {
+  background: #fff;
+  border: 2px solid #888;
+  padding: 0 0.25em;
+  position: absolute;
+}
