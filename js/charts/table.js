@@ -213,8 +213,8 @@ function myErr(jqXHR, textStatus, errorThrown) {
 
 function updateTable() {
     //var apihost = "http://lastbestthing.com";
-    //var apihost = "http://lgc-localgovdata.rhcloud.com";
-    var apihost = "http://mt-local-gov-data.appspot.com";
+    //var apihost = "http://mt-local-gov-data.appspot.com";
+    var apihost = "http://lgc-localgovdata.rhcloud.com";
     var request = "/data/json/" + category + "/";
     //var request = "/data/v1/json/" + category + "/";
     request += escape(cfg.name) + "/year/" + escape(cfg.year) + "/fields/" + escape(cfg.field);
