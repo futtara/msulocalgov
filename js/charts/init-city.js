@@ -6,7 +6,6 @@ var city_all_classes = [1, 2, 3, 'Town'];
 var city_table_fields = [
   'Population',
   'Class',
-  //'Region', // deprecated
   'Taxable Valuation (Mill Value)',
   'General Fund Mills Levied',
   'Total Mills Levied',
@@ -21,8 +20,6 @@ var city_table_fields = [
 ];
 var city_numeric_fields = [
   'Population',
-  'Class',
-  //'Region', // deprecated
   'Taxable Valuation (Mill Value)',
   'General Fund Mills Levied',
   'Total Mills Levied',

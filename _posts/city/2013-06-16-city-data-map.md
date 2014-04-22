@@ -3,6 +3,7 @@ category: city
 title: City Data Maps
 tags: city
 type: data
+chart: map
 layout: page-chart
 script: map.js
 required-scripts: [leaflet.js]

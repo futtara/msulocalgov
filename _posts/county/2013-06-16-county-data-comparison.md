@@ -3,6 +3,7 @@ category: county
 title: County Comparison Charts
 tags: county
 type: data
+chart: comparison
 layout: page-chart
 script: comparison.js
 required-scripts: []

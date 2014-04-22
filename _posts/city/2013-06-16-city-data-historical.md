@@ -3,6 +3,7 @@ category: city
 title: City Data Tables
 tags: city
 type: data
+chart: historical
 layout: page-chart
 script: historical.js
 required-scripts: []

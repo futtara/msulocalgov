@@ -3,6 +3,7 @@ category: city
 title: City Data Tables
 tags: city
 type: data
+chart: table
 layout: page-chart
 script: table.js
 required-scripts: [dataTables.colVis.min.js, dataTables.fixedColumns.min.js]

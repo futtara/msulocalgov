@@ -3,6 +3,7 @@
  */
 
 $prose-max-width: 50em;
+$wide-chart-max-width: 75em;
 $aspect: 80%;
 
 /* ===== General styles for chart pages ===== */
@@ -21,6 +22,9 @@ $aspect: 80%;
   padding-bottom: 10px;
   position: relative;
   width: 100%;
+}
+.table #chart-wrap {
+  max-width: $wide-chart-max-width;
 }
 #controls {
   padding: .5em;

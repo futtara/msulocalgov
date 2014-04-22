@@ -3,6 +3,7 @@ category: county
 title: County Data Maps
 tags: county
 type: data
+chart: map
 layout: page-chart
 script: map.js
 required-scripts: [leaflet.js]

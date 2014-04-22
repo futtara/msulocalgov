@@ -15,7 +15,7 @@
   {% endif %}
   <link href="{{site.baseurl}}/css/lgc.css" rel="stylesheet" />
 </head>
-<body class="{{page.layout}}">
+<body class="{{page.chart}}">
   <div id="page"{% if page.sidebar and page.sidebar != "none" %} class="has-sidebar sidebar-{{page.sidebar}}"{% endif %}>
     {% include header.html %}
 {{content}} {% comment %} Keep left to avoid offset in html {% endcomment %}

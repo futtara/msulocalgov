@@ -131,6 +131,9 @@ html, body {
   position: relative;
   width: 100%; }
 
+.table #chart-wrap {
+  max-width: 75em; }
+
 #controls {
   padding: .5em; }
 

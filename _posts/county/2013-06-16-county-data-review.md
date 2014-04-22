@@ -3,6 +3,7 @@ category: county
 title: County Government Review
 tags: county
 type: data
+chart: review
 layout: page-chart
 script: review.js
 required-scripts: []

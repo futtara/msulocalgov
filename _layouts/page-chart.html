@@ -21,17 +21,27 @@ section: chart
             {{content}}
           </div>
 
+          <!--
           <div id="chart-wrap" class="col">
             <header><h1 id="chart-title"></h1></header>
             <div id="controls"></div>
             <div id="legend"></div>
             <div id="chart"></div>
           </div>
+          -->
 
         </div> <!-- end of #content -->
         {% if page.sidebar and page.sidebar != "none" %}
         {% include sidebar.html %}
         {% endif %}
+      </div> <!-- end of row -->
+      <div class="row">
+          <div id="chart-wrap" class="col">
+            <header><h1 id="chart-title"></h1></header>
+            <div id="controls"></div>
+            <div id="legend"></div>
+            <div id="chart"></div>
+          </div>
       </div> <!-- end of row -->
 
       <div id="gloss"></div>

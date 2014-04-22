@@ -3,6 +3,7 @@ category: city
 title: City Comparison Charts
 tags: city
 type: data
+chart: comparison
 layout: page-chart
 script: comparison.js
 required-scripts: []

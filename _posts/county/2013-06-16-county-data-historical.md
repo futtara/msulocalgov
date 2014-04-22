@@ -3,6 +3,7 @@ category: county
 title: County Historical Charts
 tags: county
 type: data
+chart: historical
 layout: page-chart
 script: historical.js
 required-scripts: []

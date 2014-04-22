@@ -3,6 +3,7 @@ category: city
 title: City Government Review
 tags: city
 type: data
+chart: review
 layout: page-chart
 script: review.js
 required-scripts: []
