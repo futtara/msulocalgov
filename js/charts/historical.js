@@ -227,11 +227,19 @@ function updateChart() {
       var cty = years.map(function(y) {
         result = {};
         result['year'] = y;
-        result[cfg.field] = tryNum(data[y][n][cfg.field]);
+        // Handle missing values
+        if (data[y][n] && data[y][n][cfg.field]) {
+          result[cfg.field] = tryNum(data[y][n][cfg.field]);
+        }
+        else {
+          result[cfg.field] = 'NA';
+        }
         return result;
       });
-      return {'name':n, 'values':cty};
+      ctyValid = cty.filter(function(x) {return (x[cfg.field] != 'NA')});
+      return {'name':n, 'values':ctyValid};
     });
+    console.log("cties ", cties);
 
     x.domain(d3.extent(years));
 
