@@ -87,7 +87,7 @@ var tooltipDiv = d3.select("body").append("div")
   .style("opacity", 0);
 
 function mouseOver(d) {
-  console.log("d ", d);
+  //console.log("d ", d);
   //tooltipDiv.html(glossary[this.text])  
   tooltipDiv.html('hi there')  
       .style("left", (d3.event.pageX) + "px")     
@@ -113,7 +113,7 @@ function mouseMove() {
 
 ////////// Update functions //////////
 function updateName(name) {
-  console.log("updateName ", name);
+  //console.log("updateName ", name);
   cfg.name = name;
   cfg.year = "all";
   cfg.field = "all";
@@ -206,9 +206,9 @@ jQuery.fn.dataTableExt.oSort['NumericOrBlank-desc'] = function(y,x) {
 
 ////////// Table //////////
 function myErr(jqXHR, textStatus, errorThrown) {
-  console.log("errorThrown ", errorThrown);
-  console.log("textStatus ", textStatus);
-  console.log("jqXHR ", jqXHR);
+  //console.log("errorThrown ", errorThrown);
+  //console.log("textStatus ", textStatus);
+  //console.log("jqXHR ", jqXHR);
 }
 
 function updateTable() {
@@ -219,7 +219,7 @@ function updateTable() {
     //var request = "/data/v1/json/" + category + "/";
     request += escape(cfg.name) + "/year/" + escape(cfg.year) + "/fields/" + escape(cfg.field);
     var url = apihost + request;
-    console.log("url ", url);
+    //console.log("url ", url);
     jQuery('#chart').html( '<table id="visualization"></table>' );
 
     jQuery.ajax( {
@@ -230,11 +230,11 @@ function updateTable() {
     } );
 
     function myCallback( data ) {
-        console.log("data", data);
+        //console.log("data", data);
         var years = d3.keys(data).map(function(d) {return +d;}).sort();
-        console.log("years: ", years);
+        //console.log("years: ", years);
         var names = d3.keys(data[years[0]]);
-        console.log("names: ", names);
+        //console.log("names: ", names);
 
         var not_available = '<i>NA</i>';
         var cols = [];
@@ -324,11 +324,12 @@ function updateTable() {
         if (cfg.tableType == 'name')
             myTableObject["bSort"] = false;
 
-        console.log("cols: ", cols);
-        console.log("myTableObject: ", myTableObject);
+        //console.log("cols: ", cols);
+        //console.log("myTableObject: ", myTableObject);
 
         var thetable = jQuery('#visualization').dataTable( myTableObject );
-        new jQuery.fn.dataTable.FixedColumns( thetable );
+        //new jQuery.fn.dataTable.FixedColumns( thetable );
+        new jQuery.fn.dataTable.FixedHeader( thetable );
 
         jQuery('#visualization tr').click( function() {
             jQuery(this).toggleClass('row-selected');
