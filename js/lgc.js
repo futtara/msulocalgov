@@ -7,7 +7,6 @@ var glossArray = [];
 ///// Full glossary overlay /////
 
 function buildGlossaryButton() {
-  console.log("Building button");
   $("#main")
   .prepend( $("<div>")
   .attr("id", "glossary-button")
@@ -25,7 +24,6 @@ function buildGlossary() {
       glossArray.push([d[j].term, d[j].description]);
       glossary[d[j].term] = d[j].description;
     }
-    console.log("glossary ", glossary);
 
     // Fill glossary data into html
     var glossaryHtml = function(d) {
@@ -38,7 +36,6 @@ function buildGlossary() {
       .enter().append("div")
       .attr("class", "glossary-item")
       .html(function(d) { return glossaryHtml(d); });
-    console.log("g ", g);
   }
 
   // Get and parse the glossary data
@@ -47,7 +44,6 @@ function buildGlossary() {
 }
 
 function hideGlossary() {
-  console.log("hideGlossary");
   if(glossaryDiv.style.display == "inline-block") {
     glossaryDiv.setAttribute("style","display:none");
     $("#glossary-button").html("View<br />Glossary");

@@ -20,7 +20,6 @@ var h0 = 600;
 var aspect = h0/w0;
 var w = $('#chart-wrap').width();
 var h = Math.round(w * aspect);
-console.log("w ", w);
 
 ////////// Utility //////////
 function isNumber(n) {
@@ -141,10 +140,9 @@ function updateChart() {
   for (var key in margin) {
     margin[key] = Math.round(margin[key] * w/w0);
   }
-  console.log("margin ", margin);
   var chartWidth = w - margin.left - margin.right,
   chartHeight = Math.round(w * aspect) - margin.top - margin.bottom;
-  console.log("chartWidth ", chartWidth, " chartHeight ", chartHeight);
+  //console.log("chartWidth ", chartWidth, " chartHeight ", chartHeight);
 
   // Needed for svg responsiveness
   var viewBox = "0 0 " + w + " " + h;
@@ -193,22 +191,19 @@ function updateChart() {
       name_param += escape(cfg.names[i]);
     }
   }
-  console.log(cfg.field);
-  //var apihost = "http://lastbestthing.com";
   var apihost = "http://lgc-localgovdata.rhcloud.com";
-  //var request = "/data/v1/json/" + category + "/" + name_param + "/year/all/fields/" + escape(cfg.field);
   var request = "/data/json/" + category + "/" + name_param + "/year/all/fields/" + escape(cfg.field);
   var url = apihost + request;
-  console.log(url);
+  //console.log(url);
 
   d3.json(url, function(error, data) {
     // Need sort() for undefined order in Firefox
     var years = d3.keys(data).map(function(d) {return +d;}).sort();
     var names = d3.keys(data[years[0]]);
     var labels = d3.keys(data[years[0]][names[0]]);
-    console.log(years);
-    console.log(names);
-    console.log(labels);
+    //console.log(years);
+    //console.log(names);
+    //console.log(labels);
 
     $("#chart").empty();
 
@@ -239,7 +234,7 @@ function updateChart() {
       ctyValid = cty.filter(function(x) {return (x[cfg.field] != 'NA')});
       return {'name':n, 'values':ctyValid};
     });
-    console.log("cties ", cties);
+    //console.log("cties ", cties);
 
     x.domain(d3.extent(years));
 
@@ -317,9 +312,9 @@ function updateChart() {
       .call(d3.legend);
 */
     var bbox = svg.node().getBBox();
-    console.log("bbox ", bbox);
+    //console.log("bbox ", bbox);
     bbox = x_axis.node().getBBox();
-    console.log("bbox ", bbox);
+    //console.log("bbox ", bbox);
   }); // d3.json
 }; // updateChart
 

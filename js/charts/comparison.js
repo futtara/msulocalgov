@@ -94,10 +94,8 @@ function buildControls() {
 var datatipDiv = d3.select("body").append("div")
   .attr("class", "datatip")
   .style("opacity", 0);
-console.log("Prepare datatip ", datatipDiv);
 
 function mouseOver(d) {
-  console.log("mouseOver ", d);
   datatipDiv.html(numberFormat(d))  
       .style("left", (d3.event.pageX + 10) + "px")     
       .style("top", (d3.event.pageY - 10) + "px");
@@ -148,18 +146,13 @@ var compareNumOrNull = function(a, b) {
 }
 
 function getScaleTick(max) {
-  console.log("max", max);
   var splits = [1, 2, 2, 4, 5, 5, 5, 8, 8];
   // p is log10 of max
   var p = Math.floor(Math.log(max)/Math.log(10));
   var l = Math.floor(max/Math.pow(10, p));
-  var a = l * Math.pow(10, p);
-  var tick = Math.floor(a * 900/max)/10;
-  console.log("a", a);
-  console.log("tick", tick);
+  var tick = l * Math.pow(10, p);
 
-  return a;
-  //return tick;
+  return tick;
 }
 
 ////////// Update functions //////////
@@ -174,7 +167,6 @@ function updateClass(c) {
 }
 
 function updateField(index, field) {
-  console.log("Update field", index, field);
   cfg.fields[index] = field;
   updateChart();
 }
@@ -206,18 +198,17 @@ function getRequest() {
     }
   }
   var request = "/data/api/" + category + "/all/year/" + cfg.year + "/fields/" + field_param;
-  console.log("request", request);
+  //console.log("request", request);
   return request;
 }
 
 ////////// Chart //////////
 function updateChart() {
-  //var apihost = "http://lastbestthing.com";
   var apihost = "http://lgc-localgovdata.rhcloud.com";
   var url = apihost + getRequest();
-  console.log(" url ",  url);
+  //console.log(" url ",  url);
   d3.json(url, function(error, data) {
-    console.log("data", data);
+    //console.log("data", data);
     years = d3.keys(data).map(function(d) {return +d;});
     names = d3.keys(data[years[0]]).sort();
 
@@ -248,7 +239,7 @@ function updateChart() {
         bardata.push(fields);
       }
     });
-    console.log("bardata ", bardata);
+    //console.log("bardata ", bardata);
     // Label columns
     var columns = [];
     var columnLabels = '<th style="width:12em";>' + '&nbsp;' + '</th>';
@@ -275,8 +266,6 @@ function updateChart() {
       .enter().append("tr");
 
     // Click event to do sort when column label clicked
-    console.log("Assigning onclick");
-    console.log("columns", columns);
     d3.selectAll("thead td").data(seq0123).on("click", function(d, i) {
       tr.sort(function(a, b) { return compareNumOrNull(a[i+1], b[i+1]); });
     });

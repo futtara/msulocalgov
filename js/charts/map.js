@@ -31,7 +31,6 @@ function zoomToFill(event) {
   var w = $("#chart").width();
   // Calculate appropriate zoom
   var zoomlevel = -3.2 + Math.log(w)/Math.log(2);
-  console.log("w ", w, " zoomlevel ", zoomlevel);
   map.setZoom(zoomlevel);
 
   // Reset height of #map div for proper layout
@@ -93,7 +92,6 @@ function buildControls() {
   year_select_div.children().eq(20).attr("selected", true);
 
   // Build info panel
-  console.log("chart ? ", $("#chart"));
   $("#chart")
     .append( $("<div>")
     .attr("id", "map-info"));
@@ -182,20 +180,14 @@ function legend_update() {
   }
   html += '</ul>';
   legend_div.innerHTML = html;
-  console.log("legend_div ", legend_div);
 } // legend_update
 
 function updateField(field) {
-  console.log("Enter updateField");
-  console.log("counties ", counties);
-  console.log("cities ", cities);
-
   cfg.field = field;
   setMapColors(cfg.field);
   counties.setStyle(mapStyleCounty);
   cities.setStyle(mapStyleCity);
   legend_update();
-  console.log("Leave updateField");
 }
 
 // Assumes all or none availability
@@ -211,14 +203,10 @@ function haveFieldData(data, field) {
 }
 
 function updateYearCallback(data) {
-  console.log("Enter updateYearCallback");
-  //console.log("Before data ", cfg.data);
   cfg['data'] = data;
-  console.log("Now data ", cfg.data);
 
   if (!haveFieldData(cfg.data, cfg.field)) {
     var errmsg = "Error, no data for " + cfg.field + " for " + cfg.year;
-    console.log(errmsg);
     document.getElementById('map-info').innerHTML = errmsg;
   }
   else {
@@ -226,25 +214,20 @@ function updateYearCallback(data) {
     updateField(cfg.field);
     //legend_update();
   }
-  console.log("Leave updateYearCallback");
 }
 
 function getUrl() {
-  //var apihost = "http://lastbestthing.com";
   var apihost = "http://lgc-localgovdata.rhcloud.com";
   var request = "/data/json/" + category + "/";
-  //var request = "/data/v1/json/" + category + "/";
   var fieldList = category == 'city' ? 'County' : 'County Seat';
   for (var i = 0, len = map_fields.length; i < len; i++) {
       fieldList += "," + map_fields[i];
   }
-  //console.log("fieldList ", fieldList);
   request += "all/year/" + escape(cfg.year) + "/fields/" + escape(fieldList);
   return (apihost + request);
 }
 
 function updateYear(year) {
-  console.log("Enter updateYear, year ", year);
   cfg.year = year;
   var url = getUrl();
 
@@ -257,21 +240,16 @@ function updateYear(year) {
 
   //document.getElementById('map-info').innerHTML = default_info_html;
   //info.update();
-  console.log("Leave updateYear");
 }
 
 ////////// Chart //////////
 function getFeatures() {
-  console.log("Enter getFeatures");
   $.getJSON("../../data/LGC-GeoData.json", function(data) {
     features = data;
   });
 }
 
 function drawChart(geo) {
-  console.log("Enter drawChart");
-  console.log("geo ", geo);
-
   ////////// Create layers for counties and cities //////////
   counties = L.geoJson(geo, {
     filter: function(feature, layer) { return (feature.properties.Type == 'County'); },
@@ -293,7 +271,6 @@ function drawChart(geo) {
   });
 /*
   function coords(feature) {
-    console.log("bounds ", layer.getBounds());
     latCenter = layer.getBounds().getCenter().lat;
     lngCenter = layer.getBounds().getCenter().lng;
   }
@@ -340,7 +317,6 @@ function drawChart(geo) {
     .attr("id", "map"));
   var w = $("#chart").width();
   $("#map").height(Math.round(w * mapAspectRatio));
-  console.log("set height to ", w * mapAspectRatio);
 
   map = L.map('map', {
     center: new L.LatLng(46.77, -110.07),
@@ -457,12 +433,8 @@ function drawChart(geo) {
     var html;
     if (layer.feature.properties.Name) {
       html = layer.feature.properties.Name;
-      console.log("bounds ", layer.getBounds());
-      console.log("bounds ", layer.getBounds().getCenter());
       latCenter = layer.getBounds().getCenter().lat;
       lngCenter = layer.getBounds().getCenter().lng;
-      console.log("lat ", latCenter);
-      console.log("lng ", lngCenter);
       tooltipDiv.html(html)  
         .style("left", (e.originalEvent.pageX + 10) + "px")     
         .style("top", (e.originalEvent.pageY - 15) + "px");
@@ -505,17 +477,16 @@ $(document).ready(function() {
   buildControls();
   $.when(
     $.getJSON("../../data/LGC-GeoData.json", function(data) {
-      console.log("ajax1 done");
       features = data;
     }),
     $.ajax( {
       "url": getUrl(),
       //"error": myErr,
-      "success": (function(data) { console.log("ajax2 done"); cfg['data'] = data; }),
+      "success": (function(data) { cfg['data'] = data; }),
       "dataType": "json"
     })
     ).then(function() {
-      console.log("data ", cfg.data);
+      //console.log("data ", cfg.data);
       drawChart(features);
       updateYearCallback(cfg.data);
     });

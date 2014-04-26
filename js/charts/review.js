@@ -77,7 +77,7 @@ chart_div
 
 ////////// Process data //////////
 function processCSV(data) {
-  console.log("csv data ", data);
+  //console.log("csv data ", data);
   distinctFormGov = d3.map();
   
   // Utility processing functions
@@ -130,21 +130,16 @@ function processCSV(data) {
           govData[i].forms.push({'startYear': startYear, 'endYear': endYear, 'form': value, 'type': 'Proposed'});
         }
         else {
-          console.log("Error with label ", label);
+          //console.log("Error with label ", label);
         }
       }
     }
   }
-  console.log("distinctFormGov ", distinctFormGov);
-  console.log("At end of processCSV, govData ", govData);
   drawLegend(distinctFormGov);
   drawGraph(govData);
 } // processCSV
 
 function reSort(sortField) {
-  console.log("sortField = " + sortField);
-  console.log("formgov_order ", formgov_order);
-  console.log("govData ", govData);
   function compare(a, b) {
     if (sortField == 'Form of Government') {
       var forma = govData[a].forms[11]['form'];
@@ -159,11 +154,7 @@ function reSort(sortField) {
       if (seqb === 'undefined') {
         seqb = 100;
       }
-      //console.log("a, b = ", a, b, "seqa and seqb ", seqa, seqb);
       if (seqa === 'undefined' || seqb === 'undefined') {
-        console.log("seqa or seqb undefined ", a, b);
-        console.log("govData[a].forms[11]['form'] ", govData[a].forms[11]['form']);
-        console.log("govData[b].forms[11]['form'] ", govData[b].forms[11]['form']);
         return (0);
       }
       return (seqa - seqb);
@@ -199,7 +190,7 @@ function reSort(sortField) {
   //for (i = 0; i < len; i++) {
     //govData[i].info.seq = seq2[i];
   //}
-  console.log("govDataReSort ", govDataReSort);
+  //console.log("govDataReSort ", govDataReSort);
 
   $("#axis").empty();
   $("#graph").empty();
@@ -208,8 +199,6 @@ function reSort(sortField) {
 
 ////////// Graph //////////
 function drawGraph(data) {
-  console.log("In drawGraph, data ", data);
-
   // Get min, max year for scale
   var minYear = 9999, maxYear = 0; // for scale
   var len = data.length;
@@ -221,7 +210,6 @@ function drawGraph(data) {
       maxYear = data[i].forms[11].endYear;
     }
   }
-  console.log("minYear ", minYear, " | maxYear ", maxYear);
 
   // Scales and positions
   x = d3.scale.linear()
@@ -336,7 +324,6 @@ function drawGraph(data) {
 } // drawGraph
 
 jQuery(document).ready(function() {
-  console.log(url);
   d3.csv(url, processCSV);
   buildControls();
 } ); // end document.ready
