@@ -6,13 +6,6 @@ $prose-max-width: 50em;
 $wide-chart-max-width: 75em;
 $aspect: 80%;
 
-/* ===== General styles for chart pages ===== */
-
-    html, body {
-        overflow-x: auto;
-        color:#000; /* needed? */
-    }
-
 /* ===== General chart styles ===== */
 
 #chart-wrap {
@@ -93,9 +86,7 @@ $aspect: 80%;
   float: left;
   clear: left;
   position: relative;
-  overflow: visible;
-  overflow: auto;
-  overflow: scroll;
+  overflow-y: scroll;
   width: 100%;
 }
 svg {
