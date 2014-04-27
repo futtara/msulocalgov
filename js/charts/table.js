@@ -308,14 +308,18 @@ function updateTable() {
             default:
         }
 
+        // Set table height so headers remain visible when y-scrolling
+        var tableHeight = Math.floor(0.67 * $(window).height());
+
         var myTableObject = {
             "aaData" : tableData,
             "aoColumns" : cols,
             "bDestroy" : true,
             "bPaginate" : false,
-            "sScrollY" : "600px",
+            "sScrollY" : tableHeight,
             "sScrollX": "100%",
-            "sDom": '<"top">C<"clear">t<"bottom"i><"clear">',
+            "sDom": '<"top">C<"clear">t<"clear">',
+            //"sDom": '<"top">C<"clear">t<"bottom"i><"clear">',
             "oColVis": { "aiExclude": [ 0 ] }
         };
         if (cfg.tableType == 'name')
@@ -325,8 +329,7 @@ function updateTable() {
         //console.log("myTableObject: ", myTableObject);
 
         var thetable = jQuery('#visualization').dataTable( myTableObject );
-        //new jQuery.fn.dataTable.FixedColumns( thetable );
-        new jQuery.fn.dataTable.FixedHeader( thetable );
+        new jQuery.fn.dataTable.FixedColumns( thetable );
 
         jQuery('#visualization tr').click( function() {
             jQuery(this).toggleClass('row-selected');

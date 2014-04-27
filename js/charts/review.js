@@ -67,13 +67,18 @@ var tooltipDiv = d3.select("body").append("div")
 
 // Set up axis and graph
 var chart_div = jQuery("#chart");
+// Set chart height so axis labels remain visible when y-scrolling
+var chartHeight = Math.floor(0.67 * $(window).height());
+var chartHeightStyle = "height:" + chartHeight + "px";
+
 chart_div
   .append( $('<div>')
     .attr("id", 'axisbar')
     .html('<div id="axislabel"></div><div id="axis"></div>'));
 chart_div
   .append( $('<div>')
-    .attr("id", 'graph'));
+    .attr("id", 'graph')
+    .attr("style", chartHeightStyle));
 
 ////////// Process data //////////
 function processCSV(data) {

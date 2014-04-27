@@ -127,7 +127,7 @@ html, body {
   font-size: .888em;
   margin-bottom: 10px;
   max-width: 50em;
-  padding-bottom: 10px;
+  padding-bottom: 1em;
   position: relative;
   width: 100%; }
 
@@ -200,9 +200,10 @@ html, body {
   float: left;
   clear: left;
   position: relative;
+  overflow: visible;
   overflow: auto;
-  width: 100%;
-  overflow: visible; }
+  overflow: scroll;
+  width: 100%; }
 
 svg {
   display: inline-block;

@@ -19,7 +19,7 @@ $aspect: 80%;
   font-size: .888em;
   margin-bottom: 10px;
   max-width: $prose-max-width;
-  padding-bottom: 10px;
+  padding-bottom: 1em;
   position: relative;
   width: 100%;
 }
@@ -93,9 +93,10 @@ $aspect: 80%;
   float: left;
   clear: left;
   position: relative;
-  overflow: auto;
-  width: 100%;
   overflow: visible;
+  overflow: auto;
+  overflow: scroll;
+  width: 100%;
 }
 svg {
   display: inline-block;
