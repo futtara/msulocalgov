@@ -388,32 +388,10 @@ select {
 option[disabled="disabled"] {
   color: #888; }
 
-/* ===== Sortable bar charts ===== */
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges; }
-
-.bar {
-  fill: steelblue;
-  fill-opacity: .9; }
-
-.page-template-page-barcharts-php .x.axis path {
-  display: none; }
-
-/* .x.axis text[=] {
-  background-color: yellow;
-} */
-.x.axis text {
-  /*font-size: .888em;*/
-  text-anchor: end !important; }
-
-/* ----- sortable table with bars ----------------- */
+/* ----- comparison bar charts ---------------------- */
 table {
   table-layout: auto;
   border-collapse: collapse;
-  /*font-size: .888em;*/
   width: 100%; }
 
 table th {
@@ -432,6 +410,29 @@ table thead td {
 table tbody tr:first-child td {
   padding-top: 2px; }
 
+#chart-div {
+  overflow-y: scroll; }
+
+.scale-wrap {
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding-top: 3px; }
+
+.scale {
+  border-right: 1px solid #000;
+  font-weight: normal;
+  text-align: right;
+  padding-bottom: 3px; }
+
+th .scale-wrap,
+th .scale {
+  border: none; }
+
+thead th,
+thead td {
+  text-align: center;
+  vertical-align: bottom; }
+
 #chart-header,
 #chart-table {
   table-layout: fixed; }
@@ -449,25 +450,6 @@ table tbody tr:hover th {
 
 table tbody tr:hover .bardiv {
   background: brown; }
-
-/* ----- comparison bar charts ---------------------- */
-#chart-div {
-  overflow-y: scroll; }
-
-.scale {
-  border-right: 1px solid #000;
-  font-weight: normal;
-  text-align: right;
-  padding-bottom: 3px; }
-
-.scale-wrap {
-  border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
-  padding-top: 3px; }
-
-thead td {
-  text-align: center;
-  vertical-align: bottom; }
 
 /* ===== Map charts ===== */
 #map {

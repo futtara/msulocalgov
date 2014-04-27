@@ -180,36 +180,7 @@ jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     }
 } );
 
-/*
-// See datatables.net/forums/discussion/4025/sorting-to-ignore-empty-cells/p1
-jQuery.fn.dataTableExt.oSort['NumericOrBlank-asc'] = function(x,y) {
-    var retVal;
-    if (y = parseFloat($.trim(y).replace(/,/g,''))) {
-      x = (x = parseFloat($.trim(x).replace(/,/g,''))) ? x : 0;
-      if (x==y) retVal= 0;
-      else retVal = (x>y) ? 1 : -1;
-    } else {
-      retVal = -1;
-    }
-    return retVal;
-}
-jQuery.fn.dataTableExt.oSort['NumericOrBlank-desc'] = function(y,x) {
-    var retVal;
-    x = (x = parseFloat($.trim(x).replace(/,/g,''))) ? x : 0;
-    y = (y = parseFloat($.trim(y).replace(/,/g,''))) ? y : 0;
-    if (x==y) retVal= 0;
-    else retVal = (x>y) ? 1 : -1;    
-    return retVal;
-}
-*/
-
 ////////// Table //////////
-function myErr(jqXHR, textStatus, errorThrown) {
-  //console.log("errorThrown ", errorThrown);
-  //console.log("textStatus ", textStatus);
-  //console.log("jqXHR ", jqXHR);
-}
-
 function updateTable() {
     //var apihost = "http://mt-local-gov-data.appspot.com";
     var apihost = "http://lgc-localgovdata.rhcloud.com";
@@ -221,7 +192,6 @@ function updateTable() {
 
     jQuery.ajax( {
         "url": url,
-        "error": myErr,
         "success": myCallback,
         "dataType": "json"
     } );

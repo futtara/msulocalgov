@@ -194,8 +194,6 @@ function createChart() {
       .attr("style", chartHeightStyle)
     .append( $("<table>")
       .attr("id", 'chart-table')
-    .append($("<thead>")
-    .append($("<tr>") ))
     .append($("<tbody>") )));
 
   return chart;
@@ -257,14 +255,11 @@ function updateChart() {
         bardata.push(fields);
       }
     });
-    //console.log("bardata ", bardata);
-    // Label columns
-    var columns = [];
-    var columnLabels = '<th style="width:12em";>' + '&nbsp;' + '</th>';
+
+    // Build header column labels
+    var columnLabels = '<th style="width:12em";>' + name_label + '<br><div class="scale-wrap" style="width:100%"><div class="scale" style="width:100%">' + '&nbsp;</div></div></th>';
     for (var i = 0; i < cfg.maxFields; i++) {
       if (cfg.fields[i].length > 1) {
-        columns.push(i);
-
         // Generate scale tick mark
         var max = cfg.maxDataValue[cfg.fields[i]];
         var tick = getScaleTick(max);
@@ -287,12 +282,41 @@ function updateChart() {
       .enter().append("tr");
 
     // Click event to do sort when column label clicked
+    function stringOrder(s1, s2) {
+      if (s1 < s2) {
+        return -1;
+      }
+      else if (s1 > s2) {
+        return 1;
+      }
+      else {
+        return 0;
+      }
+    }
+    d3.selectAll("#chart-header th").on("click", function(d, i) {
+      if(this.className == "sorted_desc") {
+        this.className = "sorted_asc";
+        tr.sort(function(a, b) { return stringOrder(a[0], b[0]); });
+      }
+      else {
+        this.className = "sorted_desc";
+        tr.sort(function(a, b) { return stringOrder(b[0], a[0]); });
+      }
+    });
     d3.selectAll("#chart-header td").data(seq0123).on("click", function(d, i) {
-      tr.sort(function(a, b) { return compareNumOrNull(a[i+1], b[i+1]); });
+      if(this.className == "sorted_desc") {
+        this.className = "sorted_asc";
+        tr.sort(function(b, a) { return compareNumOrNull(a[i+1], b[i+1]); });
+      }
+      else {
+        this.className = "sorted_desc";
+        tr.sort(function(a, b) { return compareNumOrNull(a[i+1], b[i+1]); });
+      }
     });
 
     // Row labels
     tr.append("th")
+      .attr("style", "width:12em;")
       .text(function(d) { return d[0]; });
 
     function barSize(d, col) {
