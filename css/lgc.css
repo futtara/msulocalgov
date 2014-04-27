@@ -116,12 +116,6 @@ Details: http://www.positioniseverything.net/easyclearing.html
 /* Styles for LGC charts
  * NOTES
  */
-/* ===== General styles for chart pages ===== */
-html, body {
-  overflow-x: auto;
-  color: #000;
-  /* needed? */ }
-
 /* ===== General chart styles ===== */
 #chart-wrap {
   font-size: .888em;
@@ -200,9 +194,7 @@ html, body {
   float: left;
   clear: left;
   position: relative;
-  overflow: visible;
-  overflow: auto;
-  overflow: scroll;
+  overflow-y: scroll;
   width: 100%; }
 
 svg {
