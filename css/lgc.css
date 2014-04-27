@@ -178,7 +178,8 @@ Details: http://www.positioniseverything.net/easyclearing.html
   clear: both;
   float: left;
   position: relative;
-  width: 100%; }
+  width: 100%;
+  margin: .5em 0; }
 
 #svgchart {
   position: relative;
