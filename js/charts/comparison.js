@@ -4,7 +4,8 @@ var cfg = {
   'class': 'all',
   'fields': ['Population', '', ''],
   'maxFields': 3,
-  'maxDataValue': []
+  'maxDataValue': [],
+  'col2index': []
 };
 var seq0123 = [0, 1, 2, 3];
 
@@ -171,20 +172,33 @@ function updateField(index, field) {
   updateChart();
 }
 
-////////// Table //////////
-function createTable() {
+////////// Chart //////////
+function createChart() {
   var chart = jQuery("#chart");
   if (chart.get(0)) {
     chart.empty();
   }
-  var table = chart
-    .append( $("<table>")
-      .attr("class", 'chart-table')
+  
+  // Set chart height so axis labels remain visible when y-scrolling
+  var chartHeight = Math.floor(0.67 * $(window).height());
+  var chartHeightStyle = "height:" + chartHeight + "px";
+
+  chart.append( $("<table>")
+      .attr("id", 'chart-header')
     .append($("<thead>")
     .append($("<tr>") ))
     .append($("<tbody>") ));
 
-  return table;
+  chart.append( $("<div>")
+      .attr("id", 'chart-div')
+      .attr("style", chartHeightStyle)
+    .append( $("<table>")
+      .attr("id", 'chart-table')
+    .append($("<thead>")
+    .append($("<tr>") ))
+    .append($("<tbody>") )));
+
+  return chart;
 }
 
 function getRequest() {
@@ -198,7 +212,6 @@ function getRequest() {
     }
   }
   var request = "/data/api/" + category + "/all/year/" + cfg.year + "/fields/" + field_param;
-  //console.log("request", request);
   return request;
 }
 
@@ -212,7 +225,8 @@ function updateChart() {
     years = d3.keys(data).map(function(d) {return +d;});
     names = d3.keys(data[years[0]]).sort();
 
-    // Save max data values for scaling in barStyle
+    // Save max data values for scaling in barSize
+    var activeColCount = 0;
     for (var i = 0; i < cfg.maxFields; i++) {
       var field = cfg.fields[i];
       cfg.maxDataValue[field] = -1;
@@ -223,9 +237,13 @@ function updateChart() {
           }
         }
       });
+      // Accounting in case of "None Selected" columns
+      if (cfg.fields[i] != "") {
+        cfg.col2index[activeColCount] = i;
+        activeColCount++;
+      }
     }
 
-    var table = createTable();
     var bardata = [];
     names.forEach(function(n) {
       if (cfg.class == 'all' || cfg.class == data[cfg.year][n]['Class']) {  
@@ -256,17 +274,20 @@ function updateChart() {
         columnLabels += '<div class="scale-wrap" style="width:90%"><div class="scale" style="width:' + tickWidth + '%">' + numberFormat(tick) + '&nbsp;</div></div></td>\n';
       }
     }
-    var labelRow = table.find("tr")
-      //.html(columnLabels);
+
+    var chart = createChart();
+
+    // Create header row
+    var headers = chart.find("#chart-header tr")
       .append(columnLabels);
 
-    // Create rows
-    var tr = d3.select("tbody").selectAll("tr")
+    // Create data rows
+    var tr = d3.select("#chart-table tbody").selectAll("tr")
       .data(bardata)
       .enter().append("tr");
 
     // Click event to do sort when column label clicked
-    d3.selectAll("thead td").data(seq0123).on("click", function(d, i) {
+    d3.selectAll("#chart-header td").data(seq0123).on("click", function(d, i) {
       tr.sort(function(a, b) { return compareNumOrNull(a[i+1], b[i+1]); });
     });
 
@@ -274,19 +295,10 @@ function updateChart() {
     tr.append("th")
       .text(function(d) { return d[0]; });
 
-    // Row bars, one per data field
-    // Find field for this column
-    function barStyle(d, col) {
-      var col_index = 0;
-      for (var i = 0; i < cfg.maxFields; i++) {
-        if (cfg.maxDataValue[cfg.fields[i]] < 0)
-          continue;
-        if (col_index >= col)
-          break;
-        col_index++;
-      }
-      var field = cfg.fields[i];
-      //console.log("barStyle", col, d, i, field);
+    function barSize(d, col) {
+      col_index = cfg.col2index[col];
+      var field = cfg.fields[col_index];
+      //console.log("barSize", col, cfg.fields[col], col_index, field);
 
       if (!isNaN(d) && cfg.maxDataValue[field] > 0) {
         var w = Math.floor(d * 900/cfg.maxDataValue[field])/10; // .1 precision
@@ -296,15 +308,16 @@ function updateChart() {
       else {
         return ("height:1em; width:0;");
       }
-    }
+    } // barSize
 
+    // Row bars, one per data field
     tr.selectAll("td")
       .data(function(d) { return d.slice(1); })
       .enter().append("td").append("div")
         .attr("class", "bardiv")
         .on("mouseover", mouseOver)
         .on("mouseout", mouseOut)
-        .attr("style", function(d, i) { return barStyle(d, i); });
+        .attr("style", function(d, i) { return barSize(d, i); });
   }); // d3.json
 }; // updateChart
 
