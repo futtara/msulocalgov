@@ -8,6 +8,10 @@ $aspect: 80%;
 
 /* ===== General chart styles ===== */
 
+.howto-header {
+  color: #c33;
+  font-weight: bold;
+}
 #chart-wrap {
   font-size: .888em;
   margin-bottom: 10px;
@@ -20,7 +24,7 @@ $aspect: 80%;
   max-width: $wide-chart-max-width;
 }
 #controls {
-  padding: .5em;
+  padding: 0 .5em;
 }
 #controls {
     float: left;
