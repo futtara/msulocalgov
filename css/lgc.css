@@ -282,29 +282,41 @@ svg {
 /* ----- Colors for Form of Government ----- */
 /* ColorBrewer diverging 9-class PiYG (use 1-4, 6-9) */
 /* #c51b7d, #de77ae, #f1b6da, #fde0ef, #f7f7f7, #e6f5d0, #b8e186, #7fbc41, #4d9221 */
+/* Green-purple scheme
+.Com, .ComCh { background: #e6f5d0; }
+.ComA, .ComEx { background: #b8e186; }
+.ComC, .ComExA { background: #7fbc41; }
+.ComExC { background: #4d9221; }
+
+.Mgr { background: #de77ae; }
+.MgrA { background: #de77ae; }
+.MgrC { background: #f1b6da; }
+.TMC { background: #fde0ef; }
+*/
+/* Blue-gold scheme */
 .Com, .ComCh {
-  background: #e6f5d0; }
+  background: #dedeff; }
 
 .ComA, .ComEx {
-  background: #b8e186; }
+  background: #b5b5ff; }
 
 .ComC, .ComExA {
-  background: #7fbc41; }
+  background: #7575c7; }
 
 .ComExC {
-  background: #4d9221; }
+  background: #3b3b8d; }
 
 .Mgr {
-  background: #de77ae; }
+  background: #ffff7f; }
 
 .MgrA {
-  background: #de77ae; }
+  background: #fff84d; }
 
 .MgrC {
-  background: #f1b6da; }
+  background: #ffde33; }
 
 .TMC {
-  background: #fde0ef; }
+  background: #f8ab00; }
 
 .Noproposal {
   background: #666; }
@@ -408,6 +420,7 @@ table thead,
 table thead th {
   font-weight: bold; }
 
+table thead th,
 table thead td {
   cursor: s-resize; }
 
@@ -487,6 +500,19 @@ table tbody tr:hover .bardiv {
 #map-info .col-val {
   white-space: nowrap;
   width: 1px; }
+
+#map-info .close {
+  background: #bbb;
+  border-bottom: 1px solid #000;
+  border-left: 1px solid #000;
+  display: inline-block;
+  height: 1em;
+  position: absolute;
+  right: 0px;
+  text-align: center;
+  vertical-align: middle;
+  top: 0px;
+  width: 1.2em; }
 
 .info-name {
   color: #036;
