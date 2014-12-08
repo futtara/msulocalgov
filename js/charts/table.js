@@ -288,7 +288,8 @@ function updateTable() {
             "bPaginate" : false,
             "sScrollY" : tableHeight,
             "sScrollX": "100%",
-            "sDom": '<"top">C<"clear">t<"clear">',
+            "sDom": '<"top">C<"clear">T<"clear">lrtip<"clear">',
+            //"sDom": '<"top">C<"clear">t<"clear">T<"clear">lfrtip<"clear">',
             //"sDom": '<"top">C<"clear">t<"bottom"i><"clear">',
             "oColVis": { "aiExclude": [ 0 ] }
         };
