@@ -838,7 +838,7 @@ nav li a {
 
 #navigation, #headnav {
   position: absolute;
-  right: 341px;
+  right: 241px;
   top: 16px;
   text-align: left;
   display: inline;
@@ -872,7 +872,7 @@ nav li a {
 .search {
   display: inline;
   position: absolute;
-  right: 110px;
+  right: 90px;
   top: 22px;
   color: #003f7f;
   white-space: nowrap; }
@@ -1186,6 +1186,10 @@ ul, ul li {
   body {
     font-size: 16px; }
 
+  #headnav,
+  .search {
+    display: none; }
+
  /* 
   .menu_container, .anchor-link { display: block; }
   
@@ -1203,6 +1207,9 @@ ul, ul li {
   .nav ul li a { border-bottom: 1px solid #3E3E3E; border-top: 1px solid #717171; color: #ffffff; padding: 12px; }
   .nav ul li a:hover { background-color:#5C5C5C; }
  */ }
+@media only screen and (max-width: 800px) {
+  #sidebar {
+    display: none; } }
 /* Set widths when sidebar is present */
 @media only screen and (min-width: 48em) {
   .has-sidebar #content {
