@@ -1,2 +1,29 @@
 <div id="crumbnav">
-  <a href="http://www.msuextension.org/">MSU Extension</a> <span class="crumb"> &gt; </span><a href="http://www.msulocalgov.org">Local Government Center</a> <span class="crumb"> &gt; Data Portal</span></div>
+  {% if page.url contains "city-data-table" %}
+  <span class="crumb"> <a href="http://www.msuextension.org/">MSU Extension</a> &gt; <a href="http://www.msulocalgov.org">Local Government Center</a>  &gt; <a href="/">Data Portal</a> &gt; <a href="/city/city-data/">City</a> &gt; Table</span>
+  {% elsif page.url contains "city-data-comparison" %}
+  <span class="crumb"> <a href="http://www.msuextension.org/">MSU Extension</a> &gt; <a href="http://www.msulocalgov.org">Local Government Center</a>  &gt; <a href="/">Data Portal</a> &gt; <a href="/city/city-data/">City</a> &gt; Comparison</span>
+  {% elsif page.url contains "city-data-historical" %}
+  <span class="crumb"> <a href="http://www.msuextension.org/">MSU Extension</a> &gt; <a href="http://www.msulocalgov.org">Local Government Center</a>  &gt; <a href="/">Data Portal</a> &gt; <a href="/city/city-data/">City</a> &gt; Historical</span>
+  {% elsif page.url contains "city-data-map" %}
+  <span class="crumb"> <a href="http://www.msuextension.org/">MSU Extension</a> &gt; <a href="http://www.msulocalgov.org">Local Government Center</a>  &gt; <a href="/">Data Portal</a> &gt; <a href="/city/city-data/">City</a> &gt; Map</span>
+  {% elsif page.url contains "city-data-review" %}
+  <span class="crumb"> <a href="http://www.msuextension.org/">MSU Extension</a> &gt; <a href="http://www.msulocalgov.org">Local Government Center</a>  &gt; <a href="/">Data Portal</a> &gt; <a href="/city/city-data/">City</a> &gt; Review</span>
+  {% elsif page.url contains "city" %}
+  <span class="crumb"> <a href="http://www.msuextension.org/">MSU Extension</a> &gt; <a href="http://www.msulocalgov.org">Local Government Center</a>  &gt; <a href="/">Data Portal</a> &gt; City</span>
+  {% elsif page.url contains "county-data-table" %}
+  <span class="crumb"> <a href="http://www.msuextension.org/">MSU Extension</a> &gt; <a href="http://www.msulocalgov.org">Local Government Center</a>  &gt; <a href="/">Data Portal</a> &gt; <a href="/county/county-data/">County</a> &gt; Table</span>
+  {% elsif page.url contains "county-data-comparison" %}
+  <span class="crumb"> <a href="http://www.msuextension.org/">MSU Extension</a> &gt; <a href="http://www.msulocalgov.org">Local Government Center</a>  &gt; <a href="/">Data Portal</a> &gt; <a href="/county/county-data/">County</a> &gt; Comparison</span>
+  {% elsif page.url contains "county-data-historical" %}
+  <span class="crumb"> <a href="http://www.msuextension.org/">MSU Extension</a> &gt; <a href="http://www.msulocalgov.org">Local Government Center</a>  &gt; <a href="/">Data Portal</a> &gt; <a href="/county/county-data/">County</a> &gt; Historical</span>
+  {% elsif page.url contains "county-data-map" %}
+  <span class="crumb"> <a href="http://www.msuextension.org/">MSU Extension</a> &gt; <a href="http://www.msulocalgov.org">Local Government Center</a>  &gt; <a href="/">Data Portal</a> &gt; <a href="/county/county-data/">County</a> &gt; Map</span>
+  {% elsif page.url contains "county-data-review" %}
+  <span class="crumb"> <a href="http://www.msuextension.org/">MSU Extension</a> &gt; <a href="http://www.msulocalgov.org">Local Government Center</a>  &gt; <a href="/">Data Portal</a> &gt; <a href="/county/county-data/">County</a> &gt; Review</span>
+  {% elsif page.url contains "county" %}
+  <span class="crumb"> <a href="http://www.msuextension.org/">MSU Extension</a> &gt; <a href="http://www.msulocalgov.org">Local Government Center</a>  &gt; <a href="/">Data Portal</a> &gt; County</span>
+  {% else %}
+  <span class="crumb"> <a href="http://www.msuextension.org/">MSU Extension</a> &gt; <a href="http://www.msulocalgov.org">Local Government Center</a>  &gt; Data Portal</span>
+  {% endif %}
+</div>
