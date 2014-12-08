@@ -21,4 +21,5 @@ Some data types are defined in the glossary, which you can view by clicking the 
 - Use one of the menus below to select a year, a county, or a data type to display.
 - Re-order the rows ascending or descending according to the values in a column by clicking on the column label.
 - Use the **Show/hide columns** control to hide unwanted columns to make a simpler table.
+- To export data to a spreadsheet program, click to select the desired rows, then Copy to the clipboard or save as a CSV file.
 <hr>
