@@ -1,6 +1,6 @@
 ////////// Configuration //////////
 var cfg = {
-  'year': 2010,
+  'year': 2013,
   'field': 'Population',
   'lastField': '',
   'maxNames': 5
@@ -89,7 +89,7 @@ function buildControls() {
       .attr("value", year)
       .text(year));
    });
-  year_select_div.children().eq(20).attr("selected", true);
+  year_select_div.children().eq(23).attr("selected", true);
 
   // Build info panel
   $("#chart")
