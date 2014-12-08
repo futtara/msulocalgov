@@ -291,7 +291,15 @@ function updateTable() {
             "sDom": '<"top">C<"clear">T<"clear">lrtip<"clear">',
             //"sDom": '<"top">C<"clear">t<"clear">T<"clear">lfrtip<"clear">',
             //"sDom": '<"top">C<"clear">t<"bottom"i><"clear">',
-            "oColVis": { "aiExclude": [ 0 ] }
+            "oColVis": { "aiExclude": [ 0 ] },
+            "oTableTools": {
+              "sRowSelect": "multi",
+              "aButtons": [ "select_all", "select_none",
+                            { "sExtends": "copy", "bSelectedOnly": "true" },
+                            { "sExtends": "csv", "bSelectedOnly": "true" },
+                            { "sExtends": "print", "bSelectedOnly": "true" }
+                          ]
+            }
         };
         if (cfg.tableType == 'name')
             myTableObject["bSort"] = false;
