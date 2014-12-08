@@ -3,16 +3,19 @@ layout: default
 section: home
 ---
 
+    {% if page.sidebar and page.sidebar != "none" %}
+    {% include breadcrumbs.html %}
+    {% endif %}
     <div id="main">
       <div class="row">
+        {% if page.sidebar and page.sidebar != "none" %}
+        {% include sidebar-lgc.html %}
+        {% endif %}
         <div id="content" class="col">
           <div class="prose">
             {{content}}
           </div>
         </div> <!-- end of #content -->
-        {% if page.sidebar and page.sidebar != "none" %}
-        {% include sidebar.html %}
-        {% endif %}
       </div> <!-- end of .row -->
 
     </div> <!-- end of main -->

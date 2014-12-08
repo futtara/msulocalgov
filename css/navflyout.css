@@ -1,0 +1,35 @@
+.links{font-weight:inherit}
+
+.links a{list-style:outside; margin-left:0px; margin-top:0px; padding:2px 0px 1px 0px; text-indent:0px; display:block; text-decoration:none}
+
+.links h3{font-size:11px; font-weight:bold; margin:0px}
+
+.exnav ul, .exnav{margin:0; padding:0; list-style:none; width:170px; /* Width of Menu Items *//* border-bottom:1px solid #c4a62e; */}
+.exnav ul{border-bottom:1px solid #c4a62e}
+.exnav ul li, .exnav li{position:relative; margin:0; padding:0}
+.exnav li h2 a{color:#003f7f !important}
+.exnav li ul, .exnav li ul ul{position:absolute; left:169px; /* Set 1px less than menu width */top:0; display:none; margin:0 1px; padding:0; z-index:1000}
+
+/* Styles for Menu Items */
+.exnav li a{display:block; width:155px; text-decoration:none; color:#585858; background:#fff; /* IE6 Bug */background-color:#fff; padding:2px 10px 2px 0px; /* border:1px solid #ccc; /* IE6 Bug */border-bottom:0; cursor:pointer}
+
+/* Styles for Menu Items */
+.exnav ul li a{padding:2px 10px 2px 3px; border:1px solid #ccc; /* IE6 Bug */border-bottom:0}
+
+.exnav a:hover{text-decoration:underline; color:#003f7f}
+
+/* Holly Hack. IE Requirement \*/
+* html .exnav ul li{float:left; height:1%}
+* html .exnav ul li a{height:1%}
+/* End */
+.exnav li:hover ul, .exnav li.over ul{display:block}/* The magic */
+
+.exnav li:hover ul ul, .exnav li:hover ul ul ul, .exnav li.over ul ul, .exnav li.over ul ul ul{display:none}
+.exnav li:hover ul, .exnav li li:hover ul, .exnav li li li:hover ul, .exnav li.over ul, .exnav li li.over ul, .exnav li li li.over ul{/* lists nested under hovered list items */display:block}
+
+.exnav a.drop, .exnav a.drop:visited{background:#fff url('../images/navoff.png') no-repeat top right}
+.exnav ul a.drop, .exnav ul a.drop:visited{background:#fff url('../images/navoff.png') no-repeat top right}
+.exnav ul ul a.drop, .exnav ul ul a.drop:visited{background:#fff url('../images/navoff.png') no-repeat top right}
+
+.exnav a.drop:hover, .exnav ul a.drop:hover, .exnav ul ul a.drop:hover{background:#fff url('../images/navon.png') no-repeat top right}
+.exnav:hover >a.drop, .exnav ul:hover >a.drop, .exnav ul ul:hover >a.drop{background:#fff url('../images/navon.png') no-repeat top right}

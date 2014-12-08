@@ -11,8 +11,10 @@
   {% endif %}
   {% if page.url contains "table" %}
   <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+  <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/tabletools/2.2.2/css/dataTables.tableTools.css">
   {% endif %}
   <link href="{{site.baseurl}}/css/lgc.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/css/navflyout.css" media="screen" />
 </head>
 <body class="{{page.chart}}">
   <div id="page"{% if page.sidebar and page.sidebar != "none" %} class="has-sidebar sidebar-{{page.sidebar}}"{% endif %}>

@@ -57,7 +57,8 @@ table {
   outline: 0; }
 
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif; }
 
 h1 {
   margin: 0.67em 0; }
@@ -761,7 +762,10 @@ body {
 
 #main h1 {
   font-size: 2em;
-  font-weight: normal; }
+  font-weight: normal;
+  font-size: 24px;
+  font-weight: bold;
+  color: #003f7f; }
 
 #main h2 {
   font-size: 1.5em;
@@ -787,9 +791,11 @@ body {
 
 #msu-logo {
   float: left;
+  /*
   margin: 0 15px 0 0;
   padding: 2px 10px 25px 10px;
-  border-right: 1px solid #fff; }
+  border-right: 1px solid #fff;
+  */ }
 
 #site-title {
   padding-top: 1em; }
@@ -821,6 +827,116 @@ nav ul {
 nav li a {
   float: left; }
 
+#crumbnav {
+  margin: 0px;
+  padding: 15px 20px 10px 0px; }
+
+#crumbnav a {
+  text-decoration: none;
+  color: #555; }
+
+#crumbnav a:hover {
+  text-decoration: underline;
+  color: #003f7f; }
+
+#left {
+  padding: 2px 15px 10px 0px;
+  float: left;
+  width: 170px;
+  text-align: left;
+  border-right: 1px #c4a62e solid; }
+
+#sidebar .links {
+  font-weight: bold;
+  font-size: .95em;
+  border-bottom: 1px #c4a62e solid;
+  padding: 0px 0px 10px 0px;
+  position: relative;
+  width: 170px;
+  top: 0px;
+  left: 0px; }
+
+#sidebar .links h2 {
+  margin: 8px 0px 4px 0px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #003f7f;
+  padding: 0px; }
+
+#sidebar .links h3 {
+  font-size: 11px;
+  font-weight: bold;
+  display: inline;
+  margin: 0px;
+  color: #003f7f;
+  padding: 1px 3px 1px 0px; }
+
+#sidebar .links a {
+  font-weight: normal;
+  font-family: Arial,Helvetica,sans-serif;
+  list-style: outside;
+  margin-left: 0px;
+  margin-top: 1px;
+  padding: 2px 0px 1px 0px;
+  display: block;
+  text-decoration: none; }
+
+#sidebar .links h2 a {
+  font-weight: bold;
+  color: #003f7f; }
+
+#sidebar .links a:hover {
+  text-decoration: underline; }
+
+#sidebar .links ul {
+  list-style: none;
+  padding: 0px 0px 0px 0px;
+  margin: 0px;
+  width: 170px; }
+
+#sidebar .links ul li a {
+  display: inline-block; }
+
+#sidebar .links a img {
+  padding: 0px;
+  text-indent: 0px;
+  margin: 0px; }
+
+/* Contact box */
+.goldrule {
+  margin-top: 10px; }
+
+#sidebar #contact {
+  margin-top: 15px;
+  font-weight: normal;
+  position: relative;
+  text-decoration: none;
+  line-height: 15.1px; }
+
+#sidebar #contact p {
+  padding: 0px 0px 10px 0px;
+  margin: 0px; }
+
+#sidebar #contact a {
+  color: #555;
+  text-decoration: underline; }
+
+#sidebar #contact h2 {
+  margin: 0px;
+  padding: 0px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #003f7f; }
+
+j
+#crumbnav,
+#crumbnav a,
+#crumbnav .crumb,
+#sidebar,
+#sidebar a {
+  font-size: 11px;
+  font-weight: normal; }
+
 #content {
   max-width: 45em;
   margin: 0;
@@ -846,12 +962,18 @@ a {
   background: rgba(255, 255, 255, 0.4); }
 
 #glossary-button {
+  /*
   background: #ee6;
+  right: 0;
+  top: 0;
+  */
+  background: #003f7f;
+  color: #fff;
   padding: .25em;
   position: fixed;
-  right: 0;
+  right: 10px;
   text-align: center;
-  top: 0;
+  top: 10px;
   width: 5em;
   z-index: 100; }
 
