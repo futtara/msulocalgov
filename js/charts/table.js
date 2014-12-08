@@ -1,6 +1,6 @@
 ////////// Configuration //////////
 var cfg = {
-  'year': 2010,
+  'year': 2013,
   'field': 'all',
   'name': 'all',
   'tableType': 'year'
@@ -31,7 +31,7 @@ function buildControls() {
       .attr("value", year)
       .text(year));
    });
-  year_select_div.children().eq(20).attr("selected", true);
+  year_select_div.children().eq(23).attr("selected", true);
 
   // Build city/county selectbox
   controls_div

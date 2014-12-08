@@ -1,6 +1,6 @@
 ////////// Configuration //////////
 var cfg = {
-  'year': 2010,
+  'year': 2013,
   'class': 'all',
   'fields': ['Population', '', ''],
   'maxFields': 3,
@@ -34,7 +34,7 @@ function buildControls() {
         .attr("value", year)
         .text(year));
   });
-  year_select_div.children().eq(20).attr("selected", true);
+  year_select_div.children().eq(23).attr("selected", true);
 
   // Build class selectbox (cities only)
   if (category == 'city') {
