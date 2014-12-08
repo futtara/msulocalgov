@@ -16,8 +16,6 @@ Data on Montana cities can be viewed in three different ways. You may display al
 
 Some data types are defined in the glossary, which you can view by clicking the button in the upper right corner on any chart page. Individual definitions may also be provided by hovering over a column label with your mouse.
 
-*Note: some data is currently missing or unverified.*
-
 <hr>
 <h4 class="howto-header">How to Use this Chart</h4>
 - Use one of the menus below to select a year, a county, or a data type to display.

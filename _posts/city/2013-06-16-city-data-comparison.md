@@ -14,8 +14,6 @@ published: true
 
 This interactive chart allows you to compare cities according to 1, 2, or 3 kinds of data. This allows you to see relationships that might exist, for example between funding levels and population. Deviations from those relationships are also noticeable.
 
-*Note: some data is currently missing or unverified.*
-
 <hr>
 <h4 class="howto-header">How to Use this Chart</h4>
 - Use the menus below to select a year and 1-3 data types to display.
