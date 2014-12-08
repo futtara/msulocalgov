@@ -19,7 +19,7 @@ var county_table_fields = [
   'Form of Government',
   'Government Powers',
   'Commission Size',
-  'Officials',
+  'Other Elected Officials',
   'Type of Election'
 ];
 var county_numeric_fields = [
@@ -35,7 +35,7 @@ var county_numeric_fields = [
   'FTE',
   'Road Miles',
   'Commission Size',
-  'Officials'
+  'Other Elected Officials'
 ];
 var county_historical_fields = [
   'Population',
@@ -75,7 +75,7 @@ var county_map_fields = [
   'FTE',
   'Road Miles',
   'Commission Size',
-  'Officials',
+  'Other Elected Officials',
   'Form of Government',
   'Government Powers',
   'Type of Election'
@@ -225,7 +225,7 @@ var county_map_attr = {
     breaks: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
     colors: colors12QualSet3
   },
-  'Officials': {
+  'Other Elected Officials': {
     breaks: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
     colors: colors12QualSet3
   },
