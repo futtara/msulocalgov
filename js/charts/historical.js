@@ -7,11 +7,15 @@ var cfg = {
 
 var plotColors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'];
 
+var category_plural;
+
 if (category == "county") {
   cfg['names'] = ['Gallatin', 'Park'];
+  category_plural = "Counties";
 } 
 else {
   cfg['names'] = ['Bozeman', 'Helena'];
+  category_plural = "Cities";
 } 
 
 var baseFontSize = 18;
@@ -61,6 +65,9 @@ function buildControls() {
 
   // Build city/county selectboxes
   var name_select_div;
+  controls_div
+    .append( $("<label>") 
+    .text(category_plural));
   for (var i = 0; i < cfg.maxNames; i++) {
     controls_div
     .append( $("<div>")
