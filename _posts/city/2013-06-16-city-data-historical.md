@@ -1,6 +1,6 @@
 ---
 category: city
-title: City Data Tables
+title: City Historical Charts
 tags: city
 type: data
 chart: historical
@@ -12,8 +12,13 @@ published: true
 
 ##City Historical Charts
 
-On this page you can chart numerical data for the years available in the Local Government Center database (from 1991 for some data to present). Choose which type of data to display using the drop-down menu.
-
-You can display data for a single selected city or up to 5 cities in the same chart. Hovering or clicking on a data point will show the data value for that point.
+On this page you can chart numerical data for the years available in the Local Government Center database (from 1991 for some data to present). You can easily compare trends for up to 5 cities on the same chart.
 
 *Note: some data is currently missing or unverified.*
+
+<hr>
+<h4 class="howto-header">How to Use this Chart</h4>
+- Choose which type of data to display using the drop-down menu.
+- Use the menus below to select 1-5 cities to display.
+- Hover or click on a data point to show the data value for that point.
+<hr>
