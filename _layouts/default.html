@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MT LGC {% if page.url != "/index.html" %}| {{page.title}}{% endif %}</title>
+  <title>MT LGC Data Portal {% if page.url != "/index.html" %}| {{page.title}}{% endif %}</title>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="initial-scale=1,user-scalable=yes" />
   {% if page.url contains "map" %}
@@ -14,11 +14,14 @@
   <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/tabletools/2.2.2/css/dataTables.tableTools.css">
   {% endif %}
   <link href="{{site.baseurl}}/css/lgc.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="/images/favicon.ico">
   <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/css/navflyout.css" media="screen" />
 </head>
 <body class="{{page.chart}}">
   <div id="page"{% if page.sidebar and page.sidebar != "none" %} class="has-sidebar sidebar-{{page.sidebar}}"{% endif %}>
     {% include header.html %}
+  <div id="wrapper">
 {{content}} {% comment %} Keep left to avoid offset in html {% endcomment %}
+  </div> <!-- end of wrapper -->
   </div> <!-- end of page -->
 </body>
