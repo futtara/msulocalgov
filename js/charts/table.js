@@ -296,8 +296,7 @@ function updateTable() {
               "sRowSelect": "multi",
               "aButtons": [ "select_all", "select_none",
                             { "sExtends": "copy", "bSelectedOnly": "true" },
-                            { "sExtends": "csv", "bSelectedOnly": "true" },
-                            { "sExtends": "print", "bSelectedOnly": "true" }
+                            { "sExtends": "csv", "bSelectedOnly": "true" }
                           ]
             }
         };
