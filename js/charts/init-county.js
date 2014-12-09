@@ -97,15 +97,15 @@ var county_order_fields = [
 var formgov_order = {
   'Com': 0,
   'Com Ch': 1,
-  'Com (A)': 2,
-  'Com (C)': 3,
+  'Com(A)': 2,
+  'Com(C)': 3,
   'Com Ex': 4,
-  'Com Ex (A)': 5,
-  'Com Ex (C)': 6,
+  'Com Ex(A)': 5,
+  'Com Ex(C)': 6,
   'Mgr': 7,
-  'Mgr (A)': 8,
-  'Mgr (C)': 9,
-  'TM (C)': 10,
+  'Mgr(A)': 8,
+  'Mgr(C)': 9,
+  'TM(C)': 10,
   'No proposal': 11,
   'NA': 20
 };

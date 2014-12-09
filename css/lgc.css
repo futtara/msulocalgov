@@ -281,21 +281,8 @@ svg {
   width: 1em; }
 
 /* ----- Colors for Form of Government ----- */
-/* ColorBrewer diverging 9-class PiYG (use 1-4, 6-9) */
-/* #c51b7d, #de77ae, #f1b6da, #fde0ef, #f7f7f7, #e6f5d0, #b8e186, #7fbc41, #4d9221 */
-/* Green-purple scheme
-.Com, .ComCh { background: #e6f5d0; }
-.ComA, .ComEx { background: #b8e186; }
-.ComC, .ComExA { background: #7fbc41; }
-.ComExC { background: #4d9221; }
-
-.Mgr { background: #de77ae; }
-.MgrA { background: #de77ae; }
-.MgrC { background: #f1b6da; }
-.TMC { background: #fde0ef; }
-*/
 /* Blue-gold scheme */
-.Com, .ComCh {
+.Com, .ComPO {
   background: #dedeff; }
 
 .ComA, .ComEx {

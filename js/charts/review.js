@@ -4,18 +4,20 @@ var cfg = {
   'barWidth': 16,
   'barSpacing': 8
 };
-if (category == 'county') {
-  var url = "/data/lgc-review-county.csv";
-  //var url = "https://docs.google.com/spreadsheet/pub?key=0Atn3Ey0sZdckdGt5NTFEamVMVDE4ZEdQLXMxdFFOSVE&single=true&gid=0&output=csv"; // LG Review Tables, Sheet 1
-}
-else {
-  var url = "/data/lgc-review-city.csv";
-  //var url = "https://docs.google.com/spreadsheet/pub?key=0Atn3Ey0sZdckdGt5NTFEamVMVDE4ZEdQLXMxdFFOSVE&single=true&gid=1&output=csv"; // LG Review Tables, Sheet 2
-}
 
+// Data source
+var apihost = "http://lgc-localgovdata.rhcloud.com";
+var request = "/data/json/" + category + "/all/year/all/fields/Form+of+Government,Form+of+Government+Proposed";
+var url = apihost + request;
+
+// Define year segments for chart
+var startYears = [1974, 1976, 1984, 1986, 1994, 1996, 2004, 2006];
+var endYears   = [1976, 1984, 1986, 1994, 1996, 2004, 2006, 2014];
+
+// govData is the original parsed data; govDataReSort is re-ordered according to ordering control
 var govData = [];
 var govDataReSort = [];
-var distinctFormGov;
+var distinctFormGov; // for drawing legend
 
 ////////// Controls //////////
 function buildControls() {
@@ -51,6 +53,8 @@ function drawLegend(distinctFormGov) {
   fgoOrdered.forEach(function(fg) {
     if (distinctFormGov.has(fg)) {
       var fgTrim = fg.replace(/ /g, '').replace('(', '').replace(')', '');
+      if (fg == 'NA')
+        fg = 'Not Available';
       legendList += '<li><span class="marker ' + fgTrim + '">&nbsp;</span>' + fg + '</li>\n';
     }
   });
@@ -81,68 +85,47 @@ chart_div
     .attr("style", chartHeightStyle));
 
 ////////// Process data //////////
-function processCSV(data) {
-  //console.log("csv data ", data);
+function processJSON(data) {
+  //console.log("processJSON data ", data);
   distinctFormGov = d3.map();
-  
-  // Utility processing functions
-  function colname2label(form) {
-    return form.slice(0, -5);
-  }
-  function colname2year(form) {
-    return parseInt(form.slice(-4));
-  }
 
-  var len = data.length;
-  for (var i = 0; i < len; i++) {
-    var row = data[i];
-    var current;
-    var name, label, value;
-    var year, startYear, endYear, choiceYear;
+  var years = d3.keys(data).map(function(d) {return +d;}).sort();
 
-    for (key in row) {
-      if (typeof row[key] == "string") {
-        value = row[key].trim();
+  names = d3.keys(data[years[0]]).sort();
+
+  var name, form, proposed, value;
+  var nlen = names.length;
+  for (var i = 0; i < nlen; i++) {
+    name = names[i];
+    govData.push({'info': {'seq': i, 'name': name}, 'forms': []});
+
+    var slen = startYears.length;
+    for (var iy = 0; iy < slen; iy++) {
+      // Add Form of Government
+      form = data[startYears[iy]][name]['Form of Government'];
+      govData[i].forms.push({'startYear': startYears[iy], 'endYear': endYears[iy], 'form': form, 'type': 'Form'});
+      // Add Form of Government Proposed
+      if (startYears[iy] % 10 == 4) {
+        proposed = data[endYears[iy]][name]['Form of Government Proposed'];
+        govData[i].forms.push({'startYear': startYears[iy], 'endYear': endYears[iy], 'form': proposed, 'type': 'Proposed'});
+      }
+
+      // Collapse similar forms--ignore '*'
+      form = form.replace('*', '');
+      if (distinctFormGov.has(form)) {
+        distinctFormGov.set(form, distinctFormGov.get(form) + 1);
       }
       else {
-        value = row[key];
-      }
-
-      // Create new array element for 'name'
-      if (key == "COUNTY" || key == "CITY") {
-        govData.push({'info': {'seq': i, 'name': value}, 'forms': []});
-      }
-      else { // Process form of government columns
-        label = colname2label(key);
-        year = colname2year(key);
-        choiceYear = (year % 10 == 6) ? true : false;
-
-        if (label == 'FORM') {
-          startYear = year;
-          endYear = choiceYear ? year + 8 : year + 2;
-          govData[i].forms.push({'startYear': startYear, 'endYear': endYear, 'form': value, 'type': 'Form'});
-          value = value.replace('*', '');
-          if (distinctFormGov.has(value)) {
-            distinctFormGov.set(value, distinctFormGov.get(value) + 1);
-          }
-          else {
-            distinctFormGov.set(value, 1);
-          }
-        }
-        else if (label == 'PROPOSED') {
-          startYear = year - 2;
-          endYear = year;
-          govData[i].forms.push({'startYear': startYear, 'endYear': endYear, 'form': value, 'type': 'Proposed'});
-        }
-        else {
-          //console.log("Error with label ", label);
-        }
+        distinctFormGov.set(form, 1);
       }
     }
   }
+  console.log("govData", govData);
+  console.log("distinctFormGov", distinctFormGov);
+
   drawLegend(distinctFormGov);
   drawGraph(govData);
-} // processCSV
+} // processJSON
 
 function reSort(sortField) {
   function compare(a, b) {
@@ -171,19 +154,18 @@ function reSort(sortField) {
   }
 
   var len = govData.length;
-  var i;
   var seq1 = []; // 0, 1, ..., len-1
 
-  for (i = 0; i < len; i++) {
+  for (var i = 0; i < len; i++) {
     seq1.push(i);
   }
   var seqsorted = seq1.sort(compare); // ranked in compare order
   var seq2 = [];
-  for (i = 0; i < len; i++) {
+  for (var i = 0; i < len; i++) {
     seq2[seqsorted[i]] = i; // inverse of seqsorted
   }
   govDataReSort = [];
-  for (i = 0; i < len; i++) {
+  for (var i = 0; i < len; i++) {
     govDataReSort.push(govData[seqsorted[i]]);
   }
   // animate to layout with new absolute top position
@@ -195,7 +177,8 @@ function reSort(sortField) {
   //for (i = 0; i < len; i++) {
     //govData[i].info.seq = seq2[i];
   //}
-  //console.log("govDataReSort ", govDataReSort);
+
+  console.log("govDataReSort ", govDataReSort);
 
   $("#axis").empty();
   $("#graph").empty();
@@ -204,6 +187,7 @@ function reSort(sortField) {
 
 ////////// Graph //////////
 function drawGraph(data) {
+  console.log("data", data);
   // Get min, max year for scale
   var minYear = 9999, maxYear = 0; // for scale
   var len = data.length;
@@ -329,6 +313,7 @@ function drawGraph(data) {
 } // drawGraph
 
 jQuery(document).ready(function() {
-  d3.csv(url, processCSV);
+  // Reversed order of these operations
+  d3.json(url, processJSON);
   buildControls();
 } ); // end document.ready
