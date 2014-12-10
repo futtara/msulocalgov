@@ -110,7 +110,7 @@ function getColorFromName(p) {
     return (getColor(d));
   }
   else {
-    return '#ddd';
+    return '#eee';
   }
 }
 
@@ -150,7 +150,7 @@ function mapStyleCounty(feature) {
     opacity: 1,
     color: 'black',
     dashArray: '3',
-    fillOpacity: 0.6
+    fillOpacity: 1
   };
 }
 
@@ -172,10 +172,21 @@ function legend_update() {
     }
   }
   else {
+    var vals = d3.values(cfg.data[cfg.year]);
+    var distinct_vals = {};
+    vals.map(function(el) { 
+               if (el[cfg.field] in distinct_vals) {
+                 distinct_vals[el[cfg.field]]++;
+               }
+               else {
+                 distinct_vals[el[cfg.field]] = 1;
+               }
+             });
     for (var i = 0; i < cfg.breaks.length; i++) {
-      html +=
-        '<li><span class="marker" style="background:' + getColor(cfg.breaks[i]) + '">&nbsp;&nbsp;&nbsp;</span> ' +
-        cfg.breaks[i] + '</li>';
+      if (cfg.breaks[i] in distinct_vals) {
+        html += '<li><span class="marker" style="background:' + getColor(cfg.breaks[i]) +
+                '">&nbsp;&nbsp;&nbsp;</span> ' + cfg.breaks[i] + '</li>';
+      }
     }
   }
   html += '</ul>';
@@ -486,7 +497,6 @@ $(document).ready(function() {
       "dataType": "json"
     })
     ).then(function() {
-      //console.log("data ", cfg.data);
       drawChart(features);
       updateYearCallback(cfg.data);
     });

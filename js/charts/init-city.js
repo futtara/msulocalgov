@@ -10,6 +10,7 @@ var city_table_fields = [
   'General Fund Mills Levied',
   'Total Mills Levied',
   'General Funds Appropriated',
+  //'General Fund Balance',
   'Total Funds Appropriated',
   'FTE',
   'Road Miles',
@@ -24,6 +25,7 @@ var city_numeric_fields = [
   'General Fund Mills Levied',
   'Total Mills Levied',
   'General Funds Appropriated',
+  //'General Fund Balance',
   'Total Funds Appropriated',
   'FTE',
   'Road Miles',
@@ -35,6 +37,7 @@ var city_historical_fields = [
   'General Fund Mills Levied',
   'Total Mills Levied',
   'General Funds Appropriated',
+  //'General Fund Balance',
   'Total Funds Appropriated',
   'FTE',
   'Road Miles',
@@ -46,6 +49,7 @@ var city_comparison_fields = [
   'General Fund Mills Levied',
   'Total Mills Levied',
   'General Funds Appropriated',
+  //'General Fund Balance',
   'Total Funds Appropriated',
   'FTE',
   'Road Miles',
@@ -58,11 +62,13 @@ var city_map_fields = [
   'General Fund Mills Levied',
   'Total Mills Levied',
   'General Funds Appropriated',
+  //'General Fund Balance',
   'Total Funds Appropriated',
   'FTE',
   'Road Miles',
   'Council Size',
   'Form of Government',
+  'Government Powers',
   'Type of Election'
 ];
 var city_info_fields = [
@@ -72,7 +78,10 @@ var city_info_fields = [
   'Total Mills Levied',
   'Total Funds Appropriated',
   'FTE',
-  'Form of Government'
+  'Road Miles',
+  'Council Size',
+  'Form of Government',
+  'Government Powers'
 ];
 var city_order_fields = [
   //'Population',
@@ -227,8 +236,9 @@ var all_cities = [
 
 // Color schemes from Colorbrewer
 var colorsPop = ['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#BD0026', '#800026'];
+var colorsPopSparser = ['#FFEDA0', '#FEB24C', '#FC4E2A', '#BD0026', '#800026'];
 var colors6QualSet2 = ['#66C2A5', '#FC8D62', '#8DA0CB', '#E78AC3', '#A6D854', '#FFD92F'];
-var colors12QualSet3 = ['#8DD3C7', '#FFFFB3', '#BEBADA', '#FB8072', '#80B1D3', '#FDB462', '#B3DE69', '#FCCDE5', '#D9D9D9', '#BC80BD', '#CCEBC5', '#FFED6F'];
+var colors15QualSet3 = ['#8DD3C7', '#FFFFB3', '#BEBADA', '#FB8072', '#80B1D3', '#FDB462', '#B3DE69', '#FCCDE5', '#AAAAAA', '#BC80BD', '#CCEBC5', '#FFED6F', '#E31A1C', '#33A02C', '#1F78B4']; // colors12QualSet3 + last 3
 
 // Map attributes depending on field type
 var city_map_attr = {
@@ -238,7 +248,7 @@ var city_map_attr = {
   },
   'Class': {
     breaks: ['1', '2', '3', 'Town'],
-    colors: colorsPop
+    colors: colors6QualSet2
   },
   /* Income for cities not displayed on wallcharts
   'Income': {
@@ -246,40 +256,42 @@ var city_map_attr = {
     colors: colorsPop
   }, */
   'Taxable Valuation (Mill Value)': {
-    breaks: [0, 2000, 5000, 10000, 50000, 100000, 200000, 300000],
+    breaks: [0, 2000, 5000, 10000, 50000, 100000, 200000],
     colors: colorsPop
   },
   'General Fund Mills Levied': {
-    breaks: [0, 50, 100, 150, 200, 250, 300],
+    breaks: [0, 50, 100, 200, 300, 400],
     colors: colorsPop
   },
   'Total Mills Levied': {
-    breaks: [0, 50, 100, 150, 200, 250, 300],
+    breaks: [0, 100, 200, 300, 400, 500, 600],
     colors: colorsPop
   },
   'General Funds Appropriated': {
-    breaks: [0, 10000, 100000, 500000, 1000000, 5000000, 10000000, 50000000, 100000000],
+    breaks: [0, 10000, 100000, 500000, 1000000, 5000000, 10000000, 50000000],
     colors: colorsPop
   },
   'Total Funds Appropriated': {
-    breaks: [0, 10000, 100000, 500000, 1000000, 5000000, 10000000, 50000000, 100000000],
+    breaks: [0, 10000, 100000, 500000, 1000000, 5000000, 10000000, 50000000],
     colors: colorsPop
   },
   'FTE': {
-    breaks: [1, 2, 5, 10, 20],
-    colors: colors12QualSet3
+    breaks: [5, 10, 50, 100, 200, 500],
+    colors: colors15QualSet3
   },
   'Road Miles': {
-    breaks: [0, 10, 50, 100, 200, 500, 1000, 2000],
+    breaks: [0, 10, 50, 100, 200, 500],
     colors: colorsPop
   },
   'Council Size': {
-    breaks: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
-    colors: colors12QualSet3
+    breaks: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'],
+    colors: colors15QualSet3
   },
   'Form of Government': {
-    breaks: ['Charter', 'Com-ch', 'Com-ex', 'Com-ex (a)', 'Com-ex (c)', 'Mgr', 'Mgr (a)', 'Mgr (c)', 'TM (c)'],
-    colors: colors6QualSet2 // TODO more colors?
+    breaks: ['Com', 'Com(A)', 'Com(C)', 'Com PO', 'Com Ex', 'Com Ex(A)', 'Com Ex(C)', 'Mgr', 'Mgr(A)', 'Mgr(C)', 'TM(C)'],
+    //breaks: ['Charter', 'Com-ch', 'Com-ex', 'Com-ex (a)', 'Com-ex (c)', 'Mgr', 'Mgr (a)', 'Mgr (c)', 'TM (c)'],
+    //colors: colors6QualSet2 // TODO more colors?
+    colors: colors15QualSet3
   },
   'Type of Election': {
     breaks: ['Np', 'P'],

@@ -7,8 +7,8 @@ var county_table_fields = [
   'Population',
   //'County Seat',
   //'Class', // deprecated
-  'MACO District',
-  'Income',
+  //'MACO District',
+  //'Income',
   'Taxable Valuation (Mill Value)',
   'General Fund Mills Levied',
   'Total Mills Levied',
@@ -25,8 +25,8 @@ var county_table_fields = [
 var county_numeric_fields = [
   'Population',
   //'Class', // deprecated
-  'MACO District',
-  'Income',
+  //'MACO District',
+  //'Income',
   'Taxable Valuation (Mill Value)',
   'General Fund Mills Levied',
   'Total Mills Levied',
@@ -40,7 +40,7 @@ var county_numeric_fields = [
 var county_historical_fields = [
   'Population',
   //'Class', // deprecated
-  'Income',
+  //'Income',
   'Taxable Valuation (Mill Value)',
   'General Fund Mills Levied',
   'Total Mills Levied',
@@ -52,7 +52,7 @@ var county_historical_fields = [
 ];
 var county_comparison_fields = [
   'Population',
-  'Income',
+  //'Income',
   'Taxable Valuation (Mill Value)',
   'General Fund Mills Levied',
   'Total Mills Levied',
@@ -65,8 +65,8 @@ var county_comparison_fields = [
 var county_map_fields = [
   'Population',
   //'Class', // deprecated
-  'MACO District',
-  'Income',
+  //'MACO District',
+  //'Income',
   'Taxable Valuation (Mill Value)',
   'General Fund Mills Levied',
   'Total Mills Levied',
@@ -82,11 +82,14 @@ var county_map_fields = [
 ];
 var county_info_fields = [
   'Population',
-  'MACO District',
+  //'MACO District',
   'Taxable Valuation (Mill Value)',
-  'Total Mills Levied',
+  'General Funds Appropriated',
   'Total Funds Appropriated',
   'FTE',
+  'Road Miles',
+  'Commission Size',
+  'Other Elected Officials',
   'Form of Government'
 ];
 var county_order_fields = [
@@ -171,8 +174,9 @@ var all_counties = [
 
 // Color schemes from Colorbrewer
 var colorsPop = ['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#BD0026', '#800026'];
+var colorsPopSparser = ['#FFEDA0', '#FEB24C', '#FC4E2A', '#BD0026', '#800026'];
 var colors6QualSet2 = ['#66C2A5', '#FC8D62', '#8DA0CB', '#E78AC3', '#A6D854', '#FFD92F'];
-var colors12QualSet3 = ['#8DD3C7', '#FFFFB3', '#BEBADA', '#FB8072', '#80B1D3', '#FDB462', '#B3DE69', '#FCCDE5', '#D9D9D9', '#BC80BD', '#CCEBC5', '#FFED6F'];
+var colors15QualSet3 = ['#8DD3C7', '#FFFFB3', '#BEBADA', '#FB8072', '#80B1D3', '#FDB462', '#B3DE69', '#FCCDE5', '#AAAAAA', '#BC80BD', '#CCEBC5', '#FFED6F', '#E31A1C', '#33A02C', '#1F78B4']; // colors12QualSet3 + last 3
 
 // Map attributes depending on field type
 var county_map_attr = {
@@ -187,7 +191,7 @@ var county_map_attr = {
   }, */
   'MACO District': {
     breaks: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-    colors: colors12QualSet3
+    colors: colors15QualSet3
   },
   'Income': {
     breaks: [0, 10000, 20000, 30000, 40000, 50000, 60000],
@@ -198,39 +202,39 @@ var county_map_attr = {
     colors: colorsPop
   },
   'General Fund Mills Levied': {
-    breaks: [0, 50, 100, 150, 200, 250, 300],
-    colors: colorsPop
+    breaks: [0, 50, 100, 200, 300],
+    colors: colorsPopSparser
   },
   'Total Mills Levied': {
-    breaks: [0, 50, 100, 150, 200, 250, 300],
-    colors: colorsPop
+    breaks: [0, 100, 200, 300, 400],
+    colors: colorsPopSparser
   },
   'General Funds Appropriated': {
-    breaks: [0, 10000, 100000, 500000, 1000000, 5000000, 10000000, 50000000, 100000000],
+    breaks: [0, 10000, 100000, 500000, 1000000, 5000000, 10000000],
     colors: colorsPop
   },
   'Total Funds Appropriated': {
-    breaks: [0, 10000, 100000, 500000, 1000000, 5000000, 10000000, 50000000, 100000000],
+    breaks: [0, 100000, 500000, 1000000, 5000000, 10000000, 50000000],
     colors: colorsPop
   },
   'FTE': {
     breaks: [5, 10, 50, 100, 200, 500],
-    colors: colors12QualSet3
+    colors: colors15QualSet3
   },
   'Road Miles': {
-    breaks: [0, 100, 200, 500, 1000, 2000, 5000, 10000],
+    breaks: [0, 100, 200, 500, 1000, 2000],
     colors: colorsPop
   },
   'Commission Size': {
-    breaks: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-    colors: colors12QualSet3
+    breaks: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'],
+    colors: colors15QualSet3
   },
   'Other Elected Officials': {
-    breaks: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-    colors: colors12QualSet3
+    breaks: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'],
+    colors: colors15QualSet3
   },
   'Form of Government': {
-    breaks: ['Com', 'Com (a)', 'Com (c)', 'Com Ex (c)', 'Mgr', 'Mgr (c)'],
+    breaks: ['Com', 'Com(A)', 'Com(C)', 'Com Ex(C)', 'Mgr', 'Mgr(C)'],
     colors: colors6QualSet2
   },
   'Type of Election': {
