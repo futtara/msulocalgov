@@ -120,8 +120,8 @@ function processJSON(data) {
       }
     }
   }
-  console.log("govData", govData);
-  console.log("distinctFormGov", distinctFormGov);
+  //console.log("govData", govData);
+  //console.log("distinctFormGov", distinctFormGov);
 
   drawLegend(distinctFormGov);
   drawGraph(govData);
@@ -178,7 +178,7 @@ function reSort(sortField) {
     //govData[i].info.seq = seq2[i];
   //}
 
-  console.log("govDataReSort ", govDataReSort);
+  //console.log("govDataReSort ", govDataReSort);
 
   $("#axis").empty();
   $("#graph").empty();
@@ -187,7 +187,7 @@ function reSort(sortField) {
 
 ////////// Graph //////////
 function drawGraph(data) {
-  console.log("data", data);
+  //console.log("drawGraph data", data);
   // Get min, max year for scale
   var minYear = 9999, maxYear = 0; // for scale
   var len = data.length;
@@ -313,7 +313,6 @@ function drawGraph(data) {
 } // drawGraph
 
 jQuery(document).ready(function() {
-  // Reversed order of these operations
   d3.json(url, processJSON);
   buildControls();
 } ); // end document.ready
