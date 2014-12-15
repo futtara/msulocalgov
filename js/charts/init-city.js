@@ -236,6 +236,7 @@ var all_cities = [
 
 // Color schemes from Colorbrewer
 var colorsPop = ['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#BD0026', '#800026'];
+var colorsPop6 = ['#FFEDA0', '#FEB24C', '#FC4E2A', '#E31A1C', '#BD0026', '#800026'];
 var colorsPopSparser = ['#FFEDA0', '#FEB24C', '#FC4E2A', '#BD0026', '#800026'];
 var colors6QualSet2 = ['#66C2A5', '#FC8D62', '#8DA0CB', '#E78AC3', '#A6D854', '#FFD92F'];
 var colors15QualSet3 = ['#8DD3C7', '#FFFFB3', '#BEBADA', '#FB8072', '#80B1D3', '#FDB462', '#B3DE69', '#FCCDE5', '#AAAAAA', '#BC80BD', '#CCEBC5', '#FFED6F', '#E31A1C', '#33A02C', '#1F78B4']; // colors12QualSet3 + last 3
@@ -243,8 +244,8 @@ var colors15QualSet3 = ['#8DD3C7', '#FFFFB3', '#BEBADA', '#FB8072', '#80B1D3', '
 // Map attributes depending on field type
 var city_map_attr = {
   'Population': {
-    'breaks': [0, 1000, 2000, 5000, 10000, 20000, 50000, 100000],
-    'colors': colorsPop
+    'breaks': [0, 1000, 5000, 10000, 50000, 100000],
+    'colors': colorsPop6
   },
   'Class': {
     breaks: ['1', '2', '3', 'Town'],
