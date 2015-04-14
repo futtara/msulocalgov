@@ -773,7 +773,7 @@ body {
 
 #masthead {
   margin-top: 0;
-  padding: 0;
+  padding: 0 1em;
   background: #003f7f; }
 
 #banner {
@@ -875,7 +875,7 @@ nav li a {
   vertical-align: middle; }
 
 #crumbnav {
-  margin: 0px;
+  margin: 0px 1em;
   padding: 15px 20px 10px 0px; }
 
 #crumbnav a {
@@ -986,7 +986,8 @@ j
 
 /* Footer */
 #footer {
-  text-align: center; }
+  text-align: center;
+  margin: 0 1em; }
 
 .footerhr {
   border-top: 1px solid #c4a62e;
@@ -1030,6 +1031,7 @@ a {
   /* margin: 0 0.5em; */ }
 
 #main {
+  padding-left: 1em;
   position: relative;
   width: 100%;
   margin: 0;
