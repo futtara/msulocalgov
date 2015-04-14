@@ -157,6 +157,34 @@ nav li a {
   font-weight: normal;
 }
 
+/* Footer */
+#footer {
+  text-align: center;
+}
+.footerhr {
+  border-top:1px solid #c4a62e;
+  padding:5px 0;
+}
+#footer span {
+  font-weight:normal;
+  font-family:Arial,Helvetica,sans-serif;
+  color: #585858;
+  font-size: 12px;
+}
+.linkspacing,
+.linkspacingmsu {
+  font-weight:normal;
+  font-family:Arial,Helvetica,sans-serif;
+  color: #585858;
+  font-size: 12px;
+  padding-right: 10px;
+  text-decoration:none;
+}
+.linkspacing:hover,
+.linkspacingmsu:hover {
+  text-decoration:underline;
+}
+
 #content {
   max-width: $prose-max-width;
   margin: 0;
@@ -182,6 +210,7 @@ a {
   width: 100%;
   margin: 0;
   background: rgba(255, 255, 255, 0.4);
+  background: #fff;
 }
 
 #glossary-button {
