@@ -61,7 +61,7 @@ body {
 
 #wrapper {
   max-width: 1200px;
-  margin: 0 0.5em;
+  margin: 0 auto;
 }
 #masthead {
   margin-top: 0;
@@ -72,7 +72,8 @@ body {
   background: $banner-blue;
   overflow: hidden;
   position:relative;
-  margin: 0 0.5em;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 #msu-logo {
   float: left;
