@@ -15,7 +15,7 @@ Information about Montana counties can be viewed in various interactive formats:
 
 * <a href="{{site.baseurl}}/county/county-data-comparison/">Comparisons across counties</a>
 
-* <a href="{{site.baseurl}}/county/county-data-historical/">Historical trend charts</a>
+* <a href="{{site.baseurl}}/county/county-data-historical/">Trend charts</a>
 
 * <a href="{{site.baseurl}}/county/county-data-map/">Data maps</a>
 
