@@ -1,5 +1,5 @@
 exclude: [Gemfile, Gemfile.lock, vendor, config, README.md, package.json, Gruntfile.js, node_modules]
-baseurl: http://data.msulocalgov.net
+baseurl: http://data.msulocalgov.org
 site-name: 'Montana Local Government Data'
 permalink: /:categories/:title
 markdown: rdiscount
