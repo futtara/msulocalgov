@@ -89,6 +89,9 @@ em {
 .prose p {
   margin: 0 0 10px; }
 
+.prose h1 + p {
+  margin-top: 1em; }
+
 .prose p + p {
   margin-top: 1em; }
 
