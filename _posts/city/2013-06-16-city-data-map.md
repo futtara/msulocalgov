@@ -12,10 +12,10 @@ published: true
 
 ##City Data Maps
 
-A geographical display of information makes it easy to compare across cities within the state. It can also lead to insights into characteristics related to geography.
+Using this geographical display, you can compare data across cities within the state.
 
 <hr>
 <h4 class="howto-header">How to Use this Chart</h4>
 - Choose which type of data and year to display using the drop-down menus.
-- Hover or click on a city to show additional information for that city.
+- Hover/click on a city to show additional information for that city.
 <hr>
