@@ -7,4 +7,4 @@ published: true
 
 ##How to Submit City Data
 
-<iframe src="https://docs.google.com/spreadsheet/embeddedform?formkey=dHBzWVY0Rnljb1BsVnQ3a2hhYWhTbVE6MQ" frameborder="0" marginwidth="0" marginheight="0" width="760" height="1012"></iframe>
+<iframe src="https://docs.google.com/forms/d/119WFeGqzkIhT_SFWssbQfVSmoalL1hCN-Q360h3uHqM/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
