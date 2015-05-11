@@ -7,7 +7,7 @@ var cfg = {
 
 // Data source
 var apihost = "http://lgc-localgovdata.rhcloud.com";
-var request = "/data/json/" + category + "/all/year/all/fields/Form+of+Government,Form+of+Government+Proposed";
+var request = "/data/json/" + category + "/all/year/all_from_1974/fields/Form+of+Government,Form+of+Government+Proposed";
 var url = apihost + request;
 
 // Define year segments for chart
