@@ -12,7 +12,7 @@ published: true
 
 ##City Comparison Charts
 
-This interactive chart allows you to compare city data by year, class, and three additional data options. This allows you to see relationships that might exist, for example between funding levels and population. Deviations from those relationships are also noticeable.
+This interactive chart allows you to compare city data by year, class, and three additional data options.
 
 <hr>
 <h4 class="howto-header">How to Use this Chart</h4>
