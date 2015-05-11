@@ -1,6 +1,6 @@
 ---
 category: city
-title: City Historical Charts
+title: City Trend Charts
 tags: city
 type: data
 chart: historical

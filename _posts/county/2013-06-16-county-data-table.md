@@ -6,15 +6,15 @@ type: data
 chart: table
 layout: page-chart
 script: table.js
-required-scripts: [dataTables.colVis.min.js, dataTables.fixedColumns.min.js]
+required-scripts: [dataTables.colVis.min.js, dataTables.fixedColumns.min.js, dataTables.tableTools.js]
 published: true
 ---
 
 ##County Data Tables
 
-Data on Montana counties can be viewed in three different ways. You may display all data for a selected year, for a selected county, or for a selected data type. Because there is a large amount of data, you may have to scroll vertically and horizontally.
+Data on Montana counties can be viewed in three different ways: for a selected year, for a selected county, or for a selected data type (scroll vertically and horizontally to view all data).
 
-Some data types are defined in the glossary, which you can view by clicking the button in the upper right corner on any chart page. Individual definitions may also be provided by hovering over a column label with your mouse.
+Terms are defined in the glossary, which you can view by clicking the button in the upper right corner on any chart page. Individual definitions may also be provided by hovering over a column label with your mouse.
 
 <hr>
 <h4 class="howto-header">How to Use this Chart</h4>
