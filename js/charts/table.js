@@ -183,7 +183,8 @@ jQuery.extend( jQuery.fn.dataTableExt.oSort, {
 ////////// Table //////////
 function updateTable() {
     //var apihost = "http://mt-local-gov-data.appspot.com";
-    var apihost = "http://lgc-localgovdata.rhcloud.com";
+    //var apihost = "http://lgc-localgovdata.rhcloud.com";
+    var apihost = "http://api.msulocalgov.net";
     var request = "/data/json/" + category + "/";
     request += escape(cfg.name) + "/year/" + escape(cfg.year) + "/fields/" + escape(cfg.field);
     var url = apihost + request;
