@@ -2,7 +2,6 @@ exclude: [Gemfile, Gemfile.lock, vendor, config, README.md, package.json, Gruntf
 baseurl: http://data.msulocalgov.org
 site-name: 'Montana Local Government Data'
 permalink: /:categories/:title
-markdown: kramdown
 prose:
   rooturl: '_posts'
   siteurl: 'http://prose.github.io/starter/'
