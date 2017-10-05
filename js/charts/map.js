@@ -228,7 +228,8 @@ function updateYearCallback(data) {
 }
 
 function getUrl() {
-  var apihost = "http://lgc-localgovdata.rhcloud.com";
+  //var apihost = "http://lgc-localgovdata.rhcloud.com";
+  var apihost = "http://api.msulocalgov.net";
   var request = "/data/json/" + category + "/";
   var fieldList = category == 'city' ? 'County' : 'County Seat';
   for (var i = 0, len = map_fields.length; i < len; i++) {
