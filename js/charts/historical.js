@@ -198,7 +198,8 @@ function updateChart() {
       name_param += escape(cfg.names[i]);
     }
   }
-  var apihost = "http://lgc-localgovdata.rhcloud.com";
+  //var apihost = "http://lgc-localgovdata.rhcloud.com";
+  var apihost = "http://api.msulocalgov.net";
   var request = "/data/json/" + category + "/" + name_param + "/year/all/fields/" + escape(cfg.field);
   var url = apihost + request;
   //console.log(url);
