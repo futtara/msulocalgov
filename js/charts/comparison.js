@@ -215,7 +215,8 @@ function getRequest() {
 
 ////////// Chart //////////
 function updateChart() {
-  var apihost = "http://lgc-localgovdata.rhcloud.com";
+  //var apihost = "http://lgc-localgovdata.rhcloud.com";
+  var apihost = "http://api.msulocalgov.net";
   var url = apihost + getRequest();
   //console.log(" url ",  url);
   d3.json(url, function(error, data) {
